@@ -1,0 +1,53 @@
+@import './mixins.scss';
+
+img.reg-logo
+{
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+form.reg-form
+{
+    @include flex(column nowrap, flex-start, flex-start);
+
+    margin: 0 auto;
+    width: max-content;
+}
+
+div.input-wrapper
+{
+    @include flex(column nowrap, flex-start, flex-start);
+    margin-bottom: 15px;
+
+    &:last-child
+    {
+        margin-bottom: unset;
+    }
+
+    input
+    {
+        min-width: 500px;
+        padding: 5px 0 5px 15px;
+    }
+}
+
+span.required
+{
+    color: red;
+    font-size: 15px;
+}
+
+p.not-registered
+{
+    margin-top: 50px;
+    text-align: center;
+
+    a
+    {
+        color: $blueColor;
+    }
+}

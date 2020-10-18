@@ -1,0 +1,16 @@
+$blueColor: rgb(9, 85, 248);
+$greyColor: rgb(153, 153, 153);
+
+@mixin flex ($ff, $jc, $ai) {
+    display: flex;
+    flex-flow: $ff;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin grid ($gtr, $gtc, $gg) {
+    display: grid;
+    grid-template-rows: $gtr;
+    grid-template-columns: $gtc;
+    grid-gap: $gg;
+}

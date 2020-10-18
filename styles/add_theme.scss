@@ -1,0 +1,24 @@
+@import './mixins.scss';
+
+main.add-theme
+{
+    padding: 50px 0 0 0;
+}
+
+form.add-theme-form
+{
+    @include flex(column nowrap, flex-start, flex-start);
+}
+
+textarea#themeDesc
+{
+    width: 500px;
+    min-height: 80px;
+
+    resize: vertical;
+    max-height: 300px;
+
+    text-indent: 15px;
+
+    padding: 5px 0;
+}

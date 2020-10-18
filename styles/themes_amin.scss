@@ -1,0 +1,28 @@
+@import './mixins.scss';
+
+div.toolbar
+{
+    margin-bottom: 20px;
+}
+
+div.theme-admin
+{
+    @include flex(row nowrap, flex-start, center);
+
+    div.theme-info
+    {
+        padding-left: 10px;
+       border-left: 1px solid #000;
+    }
+
+    div.theme-select
+    {
+        padding-right: 10px;
+
+        input
+        {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

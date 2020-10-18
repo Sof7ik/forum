@@ -1,0 +1,78 @@
+@import './mixins.scss';
+
+div.themes-title
+{
+    @include flex(row wrap, space-between, center);
+
+    background-color: rgb(236, 235, 235);
+    padding: 20px 10px;
+}
+
+h2.section-title
+{
+    font-weight: normal;
+}
+
+div.useful-links
+{
+    a
+    {
+        margin-right: 40px;
+        color: rgb(9, 49, 228);
+        font-size: 13px;
+
+        &:last-child
+        {
+            margin-right: unset;
+        }
+    }
+}
+
+a.theme-url
+{
+    display: block;
+    color: #000;
+}
+
+div.theme-admin, a.theme-url
+{
+    margin-bottom: 10px;
+}
+
+div.theme
+{
+    border: 1px solid rgb(52, 115, 252);
+
+    background-image: linear-gradient(to bottom, 
+                                    rgb(235, 235, 235) 0 50%,
+                                    rgb(187, 187, 187)
+                                    );
+    padding: 10px 20px;
+
+    @include flex(column nowrap, flex-start, flex-start);
+
+    h3, p
+    {
+        margin-bottom: 15px;
+    }
+
+    p.theme-text
+    {
+        text-indent: 15px;
+    }
+
+    span.theme-comments
+    {
+        // align-self: flex-end;
+
+        display: inline-flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+
+        svg
+        {
+            margin-right: 7px;
+        }
+    }
+}
