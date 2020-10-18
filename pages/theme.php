@@ -13,7 +13,7 @@
     <meta http-equiv='content-language' content='ru'/>
     <meta http-equiv='pragma' content='no-cache'/>
 
-    <title><?php?> - Пульс Ивантеевки</title>
+    <title><?php echo 'Тема - Пульс Ивантеевки';?></title>
 
     <link rel='stylesheet' href='/styles/style.css'>
 
@@ -35,125 +35,30 @@
 
                 <h2>Ответы в теме</h2>
 
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
+                <section class="comment">
+                    <h3 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h3>
                     <article>Текст ответа</article>
-                </div>
+                </section>
 
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
+                <section class="comment">
+                    <h3 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h3>
                     <article>Текст ответа</article>
-                </div>
+                </section>
 
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
+                <section class="comment">
+                    <h3 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h3>
                     <article>Текст ответа</article>
-                </div>
+                </section>
 
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
+                <section class="comment">
+                    <h3 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h3>
                     <article>Текст ответа</article>
-                </div>
+                </section>
 
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
+                <section class="comment">
+                    <h3 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h3>
                     <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
-
-                <div class="comment">
-                    <h2 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h2>
-                    <article>Текст ответа</article>
-                </div>
+                </section>
 
             </section>
 

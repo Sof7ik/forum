@@ -46,7 +46,7 @@ section.theme-comments
     }
 }
 
-div.comment
+section.comment
 {
     border: 1px solid #ccc;
     padding: 5px;
@@ -58,7 +58,7 @@ div.comment
         margin-bottom: unset;
     }
 
-    h2
+    h3
     {
         font-size: 16px;
 
@@ -72,5 +72,11 @@ div.comment
 
             margin-left: 15px;
         }
+    }
+
+    article
+    {
+        padding-left: 15px;
+        text-indent: 15px;
     }
 }
