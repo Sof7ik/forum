@@ -1,3 +1,10 @@
+<?php
+if(!empty($_COOKIE['user']))
+{
+    header('Location: ./../index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang='ru'>
 <head>
@@ -26,7 +33,7 @@
         <div class="container">
             <img src="/img/logo.png" alt="logo" class="reg-logo">
 
-            <form action="" method="post" class="reg-form">
+            <form action="./../php/auth.php" method="post" class="reg-form">
 
                 <div class="input-wrapper">
                     <label for="userEmail">Email</label>

@@ -98,3 +98,19 @@ input.button, a.button
         padding: 10px 20px;
     }
 }
+
+span.theme-author
+{
+    color: $greyColor;
+    font-size: 16px;
+    font-style: italic;
+}
+
+span.theme-date
+{
+    font-weight: normal;
+    font-size: 14px;
+    color: $greyColor;
+
+    margin-left: 15px;
+}

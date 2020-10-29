@@ -1,3 +1,13 @@
+<?php
+
+$user = unserialize($_COOKIE['user']);
+if ($user['role'] !== 1)
+{
+    header('Location: ./../../index.php');
+} 
+
+?>
+
 <!DOCTYPE html>
 <html lang='ru'>
 <head>

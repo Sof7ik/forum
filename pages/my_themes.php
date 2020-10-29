@@ -1,3 +1,32 @@
+<?php
+$user = unserialize($_COOKIE['user']);
+$userId = $user['id'];
+
+if(empty($_COOKIE['user']))
+{
+    header('Location: ./../index.php');
+}
+
+require_once './../php/connection.php';
+
+$selectMyThemes = $pdo->prepare(
+    "SELECT
+        `themes`.`name` AS 'theme-name',
+        `themes`.`date`,
+        `themes`.`description`,
+        `theme-status`.`name` AS 'status-name'
+    FROM
+        $dbname.`themes`,
+        $dbname.`theme-status`,
+        $dbname.`users`
+    WHERE
+        `themes`.`status` = `theme-status`.`id` AND
+        `themes`.`author` = `users`.`id` AND
+        `themes`.`author` = :userId
+    ");
+$selectMyThemes->execute(array('userId' => $userId));
+?>
+
 <!DOCTYPE html>
 <html lang='ru'>
 <head>
@@ -16,8 +45,6 @@
     <title>Мои темы - Пульс Ивантеевки</title>
 
     <link rel='stylesheet' href='/styles/style.css'>
-
-    <script src='' defer></script>
 </head>
 <body>
     <?php require './header.php'; ?>
@@ -28,101 +55,33 @@
 
             <a href="./add_theme.php" class="button new-theme">Создать новую тему</a>
 
-            <a href="/pages/theme.php" class="theme-url" id="theme_id-1">
-                <div class="theme-title my-theme-wrapper-1">
-                    <h3>Название темы <span>от</span> <span class="theme-date">дд-мм-гггг чч:мм:сс</span> </h3>
-                    <span class="theme-status">Статус темы</span>
-                    <p class="theme-desc">Описание темы Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, aspernatur molestias? Adipisci reiciendis necessitatibus odio a incidunt sapiente, nihil ab est omnis accusamus modi quisquam exercitationem aliquid soluta officia nemo!</p>
-                </div>
-            </a>
+            <?php
+            $counter = 1;
+            $index = 1;
+            while ($myTheme = $selectMyThemes->fetch()) {
+                $date = new DateTime($myTheme['date']);
+                $counter =  $counter === 1 ? 2 : 1;
+                ?>
+                    <a href="/pages/theme.php" class="theme-url" id="theme_id-<?=$index?>">
+                        <div class="theme-title my-theme-wrapper-<?=$counter?>">
+                            <h3><?=$myTheme['theme-name']?> <span>от</span> <span class="theme-date"><?=$date->format('d-m-Y h:i:s')?></span> </h3>
+                            <span class="theme-status"><?=$myTheme['status-name']?></span>
+                            <p class="theme-desc"><?=$myTheme['description']?></p>
+                        </div>
+                    </a>
+                <?php
+                $index++;
+            }
 
-            <a href="/pages/theme.php" class="theme-url" id="theme_id-2">
+            ?>
+
+            <!-- <a href="/pages/theme.php" class="theme-url" id="theme_id-12">
                 <div class="theme-title my-theme-wrapper-2">
                     <h3>Название темы <span>от</span> <span class="theme-date">гггг-мм-дд чч:мм</span> </h3>
                     <span class="theme-status">Статус темы</span>
                     <p class="theme-desc">Описание темы Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, aspernatur molestias? Adipisci reiciendis necessitatibus odio a incidunt sapiente, nihil ab est omnis accusamus modi quisquam exercitationem aliquid soluta officia nemo!</p>
                 </div>
-            </a>
-
-            <a href="/pages/theme.php" class="theme-url" id="theme_id-3">
-                <div class="theme-title my-theme-wrapper-1">
-                    <h3>Название темы <span>от</span> <span class="theme-date">гггг-мм-дд чч:мм</span> </h3>
-                    <span class="theme-status">Статус темы</span>
-                    <p class="theme-desc">Описание темы Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, aspernatur molestias? Adipisci reiciendis necessitatibus odio a incidunt sapiente, nihil ab est omnis accusamus modi quisquam exercitationem aliquid soluta officia nemo!</p>
-                </div>
-            </a>
-
-            <a href="/pages/theme.php" class="theme-url" id="theme_id-4">
-                <div class="theme-title my-theme-wrapper-2">
-                    <h3>Название темы <span>от</span> <span class="theme-date">гггг-мм-дд чч:мм</span> </h3>
-                    <span class="theme-status">Статус темы</span>
-                    <p class="theme-desc">Описание темы Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, aspernatur molestias? Adipisci reiciendis necessitatibus odio a incidunt sapiente, nihil ab est omnis accusamus modi quisquam exercitationem aliquid soluta officia nemo!</p>
-                </div>
-            </a>
-
-            <a href="/pages/theme.php" class="theme-url" id="theme_id-5">
-                <div class="theme-title my-theme-wrapper-1">
-                    <h3>Название темы <span>от</span> <span class="theme-date">гггг-мм-дд чч:мм</span> </h3>
-                    <span class="theme-status">Статус темы</span>
-                    <p class="theme-desc">Описание темы Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, aspernatur molestias? Adipisci reiciendis necessitatibus odio a incidunt sapiente, nihil ab est omnis accusamus modi quisquam exercitationem aliquid soluta officia nemo!</p>
-                </div>
-            </a>
-
-            <a href="/pages/theme.php" class="theme-url" id="theme_id-6">
-                <div class="theme-title my-theme-wrapper-2">
-                    <h3>Название темы <span>от</span> <span class="theme-date">гггг-мм-дд чч:мм</span> </h3>
-                    <span class="theme-status">Статус темы</span>
-                    <p class="theme-desc">Описание темы Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, aspernatur molestias? Adipisci reiciendis necessitatibus odio a incidunt sapiente, nihil ab est omnis accusamus modi quisquam exercitationem aliquid soluta officia nemo!</p>
-                </div>
-            </a>
-
-            <a href="/pages/theme.php" class="theme-url" id="theme_id-7">
-                <div class="theme-title my-theme-wrapper-1">
-                    <h3>Название темы <span>от</span> <span class="theme-date">гггг-мм-дд чч:мм</span> </h3>
-                    <span class="theme-status">Статус темы</span>
-                    <p class="theme-desc">Описание темы Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, aspernatur molestias? Adipisci reiciendis necessitatibus odio a incidunt sapiente, nihil ab est omnis accusamus modi quisquam exercitationem aliquid soluta officia nemo!</p>
-                </div>
-            </a>
-
-            <a href="/pages/theme.php" class="theme-url" id="theme_id-8">
-                <div class="theme-title my-theme-wrapper-2">
-                    <h3>Название темы <span>от</span> <span class="theme-date">гггг-мм-дд чч:мм</span> </h3>
-                    <span class="theme-status">Статус темы</span>
-                    <p class="theme-desc">Описание темы Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, aspernatur molestias? Adipisci reiciendis necessitatibus odio a incidunt sapiente, nihil ab est omnis accusamus modi quisquam exercitationem aliquid soluta officia nemo!</p>
-                </div>
-            </a>
-
-            <a href="/pages/theme.php" class="theme-url" id="theme_id-9">
-                <div class="theme-title my-theme-wrapper-1">
-                    <h3>Название темы <span>от</span> <span class="theme-date">гггг-мм-дд чч:мм</span> </h3>
-                    <span class="theme-status">Статус темы</span>
-                    <p class="theme-desc">Описание темы Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, aspernatur molestias? Adipisci reiciendis necessitatibus odio a incidunt sapiente, nihil ab est omnis accusamus modi quisquam exercitationem aliquid soluta officia nemo!</p>
-                </div>
-            </a>
-
-            <a href="/pages/theme.php" class="theme-url" id="theme_id-10">
-                <div class="theme-title my-theme-wrapper-2">
-                    <h3>Название темы <span>от</span> <span class="theme-date">гггг-мм-дд чч:мм</span> </h3>
-                    <span class="theme-status">Статус темы</span>
-                    <p class="theme-desc">Описание темы Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, aspernatur molestias? Adipisci reiciendis necessitatibus odio a incidunt sapiente, nihil ab est omnis accusamus modi quisquam exercitationem aliquid soluta officia nemo!</p>
-                </div>
-            </a>
-
-            <a href="/pages/theme.php" class="theme-url" id="theme_id-11">
-                <div class="theme-title my-theme-wrapper-1">
-                    <h3>Название темы <span>от</span> <span class="theme-date">гггг-мм-дд чч:мм</span> </h3>
-                    <span class="theme-status">Статус темы</span>
-                    <p class="theme-desc">Описание темы Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, aspernatur molestias? Adipisci reiciendis necessitatibus odio a incidunt sapiente, nihil ab est omnis accusamus modi quisquam exercitationem aliquid soluta officia nemo!</p>
-                </div>
-            </a>
-
-            <a href="/pages/theme.php" class="theme-url" id="theme_id-12">
-                <div class="theme-title my-theme-wrapper-2">
-                    <h3>Название темы <span>от</span> <span class="theme-date">гггг-мм-дд чч:мм</span> </h3>
-                    <span class="theme-status">Статус темы</span>
-                    <p class="theme-desc">Описание темы Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, aspernatur molestias? Adipisci reiciendis necessitatibus odio a incidunt sapiente, nihil ab est omnis accusamus modi quisquam exercitationem aliquid soluta officia nemo!</p>
-                </div>
-            </a>
+            </a> -->
 
         </main>
     </div>
