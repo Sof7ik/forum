@@ -1,9 +1,23 @@
-<!-- 
+<?php
+$user = unserialize($_COOKIE['user']);
 
-    Название – обязательное поле
-    Текст – обязательное поле
+$name = $_POST['themeName'];
+$themeDesc = $_POST['themeDesc'];
+$userId = $user['id'];
 
-    Созданная тема должна иметь дату и время создания. Только что созданная тема должна отображаться у пользователя в списке его тем и у администратора в разделе модерации тем.
+require_once './connection.php';
 
+$newTheme = $pdo->prepare(
+    "INSERT INTO 
+        `themes`
+            (`id`, `name`, `description`, `date`, `author`, `status`) 
+    VALUES 
+            (NULL, :name, :desc, NOW(), :userId, 3)");
 
- -->
+$themeInfo = ['name' => $name, 'desc' => $themeDesc, 'userId' => $userId];
+
+if ($newTheme->execute($themeInfo))
+{
+    header('Location: ./../pages/my_themes.php');
+}
+?>

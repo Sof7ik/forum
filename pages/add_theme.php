@@ -25,7 +25,7 @@
     <main class="add-theme">
 
         <div class="container">
-            <form action="" method="post" class="add-theme-form">
+            <form action="./../php/add_theme.php" method="post" class="add-theme-form">
                 <div class="input-wrapper">
                     <label for="themeName">Название темы<span class="required"> *</span></label>
                     <input type="text" name="themeName" id="themeName" required>

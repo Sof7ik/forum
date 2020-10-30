@@ -56,7 +56,8 @@
             WHERE
                 `themes`.`status` = `theme-status`.`id` AND
                 `themes`.`status` = 3 AND 
-                `themes`.`author` = `users`.`id`");
+                `themes`.`author` = `users`.`id`
+            ORDER BY `themes`.`date` DESC");
 
             while($theme = $selectTheme->fetch())
             {
@@ -104,9 +105,14 @@
                                         echo $comments[0].' ответа в теме';
                                     }
 
-                                    elseif ($comments[0] % $comments[0] == 0)
+                                    elseif ($comments[0] % $comments[0] == 0 && $comments[0] !== 0)
                                     {
                                         echo $comments[0].' ответ в теме';
+                                    }
+
+                                    else if ($comments[0] === 0)
+                                    {
+                                        echo $comments[0].' ответов в теме';
                                     }
                                     
                                 }?>

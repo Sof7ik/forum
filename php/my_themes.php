@@ -1,3 +1,33 @@
+<?php
+$user = unserialize($_COOKIE['user']);
+$userId = $user['id'];
+
+if(empty($_COOKIE['user']))
+{
+    header('Location: ./../index.php');
+}
+
+require_once './../php/connection.php';
+
+$selectMyThemes = $pdo->prepare(
+    "SELECT
+        `themes`.`name` AS 'theme-name',
+        `themes`.`date`,
+        `themes`.`description`,
+        `theme-status`.`name` AS 'status-name'
+    FROM
+        $dbname.`themes`,
+        $dbname.`theme-status`,
+        $dbname.`users`
+    WHERE
+        `themes`.`status` = `theme-status`.`id` AND
+        `themes`.`author` = `users`.`id` AND
+        `themes`.`author` = :userId
+    ORDER BY `themes`.`status`");
+
+$selectMyThemes->execute(array('userId' => $userId));
+?>
+
 <!-- 
 
     User's themes order by moderation:
