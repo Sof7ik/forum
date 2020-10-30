@@ -33,6 +33,12 @@ if(!empty($_COOKIE['user']))
         <div class="container">
             <img src="/img/logo.png" alt="logo" class="reg-logo">
 
+            <?php
+            echo "<pre>";
+            print_r(unserialize($_COOKIE['errors']));
+            echo "</pre>";
+            ?>
+
             <form action="./../php/auth.php" method="post" class="reg-form">
 
                 <div class="input-wrapper">

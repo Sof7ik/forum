@@ -15,7 +15,7 @@ $stmt->execute($userInfo);
 
 while($row = $stmt->fetch(PDO::FETCH_LAZY))
 {
-    if ( count($row) > 0 )
+    if (count($row) > 0)
     {
         $userArray = [
             "id" => $row['id'],
@@ -26,9 +26,22 @@ while($row = $stmt->fetch(PDO::FETCH_LAZY))
             "status" => $row['status']
         ];
 
-        setcookie("user", serialize($userArray), time()+3600, '/');
+        setcookie("user", serialize($userArray), time()+86400, '/');
 
         header('Location: ./../index.php');
+    }
+    else
+    {
+        echo "1";
+
+        $errorArray = [
+            'code' => 01,
+            'message' => 'Неправильный логин или пароль'
+        ];
+
+        setcookie("errors", serialize($errorArray), time()+3600, '/');
+
+        header('Location: ./../pages/auth.php');
     }
 }
 ?>

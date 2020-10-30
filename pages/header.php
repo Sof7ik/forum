@@ -49,6 +49,15 @@
                         <nav>
                             <!-- <a href="./../pages/lk.php" class="dropdown-item">Профиль</a> -->
                             <a href="./../pages/my_themes.php" class="dropdown-item">Мои темы</a>
+
+                            <?php
+                            if($user['role'] === 1)
+                            {
+                                ?><a href="./../pages/admin/all_themes.php" class="dropdown-item">Админка</a><?php
+                            }
+                            ?>
+
+                            <a href="./../php/logout.php" class="dropdown-item">Выход</a>
                         </nav>
                     </div>
                     <?

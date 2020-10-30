@@ -13,6 +13,16 @@ h2.section-title
     font-weight: normal;
 }
 
+p.date-title
+{
+    width: 100%;
+    text-align: left;
+    padding-bottom: 5px;
+
+    border-bottom: 2px solid #000;
+    margin-bottom: 20px;
+}
+
 div.useful-links
 {
     a
@@ -81,6 +91,4 @@ div.theme
             margin-right: 7px;
         }
     }
-
-    
 }
