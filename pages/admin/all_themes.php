@@ -29,60 +29,31 @@ if ($user['role'] !== 1)
 </head>
 <body>
     <?require './../header.php'; ?>
+
+    <?include_once './admin-nav.html';?>
     
     <main class="themes">
         <div class="container">
 
             <div class="themes-wrapper" style="padding-top: 50px;">
 
-                <form action="./../../php/admin.php" method="post">
+                <form action="./../../php/updateThemes.php" method="post">
                     <div class="toolbar">
                         <p style="margin-bottom: 10px;">С выделенными:</p>
-                        <input type="submit" class="button" value="Одобрить">
-                        <input type="submit" class="button" value="Отклонить">
+                        <input type="submit" class="button" value="Одобрить" name="themeDecision">
+                        <input type="submit" class="button" value="Отклонить" name="themeDecision">
                     </div>
 
                     <?php
-                    require_once './../../php/connection.php';
-                    $allThemes = $pdo->query("SELECT * FROM `forum`.`themes` ORDER BY `date` DESC;");
-                    while ($theme = $allThemes->fetch())
-                    {
-                        ?>
-                            <div class="theme theme-admin">
-                                <div class="theme-select">
-                                    <input type="checkbox" name="themeAccept[]" value="<?=$theme['id']?>" id="">
-                                </div>
-                                
-                                <div class="theme-info">
-                                    <h3 class="theme-name"><?=$theme['name']?></h3>
-                                    <p class="theme-text"><?=$theme['description']?></p>
-                                </div>
-                                
-                            </div>
-                        <?php
-                    }
-                    
+                    require_once './../../php/selectAllThemes.php';
                     ?>
-
-                    <!-- <div class="theme theme-admin">
-                        <div class="theme-select">
-                            <input type="checkbox" name="themeAccept[]" id="">
-                        </div>
-                        
-                        <div class="theme-info">
-                            <h3 class="theme-name">Название темы</h3>
-                            <p class="theme-text">Краткий текст о теме - Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus accusantium fugit, beatae, fuga cumque nesciunt dicta mollitia voluptatem temporibus illo laudantium? Dignissimos corrupti enim, cum deserunt at harum maiores assumenda!</p>
-                        </div>
-                        
-                    </div> -->
 
                 </form>
 
             </div>
 
         </div>
-
     </main>
-
+    
 </body>
 </html>

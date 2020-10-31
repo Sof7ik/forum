@@ -2,7 +2,26 @@
 
 require_once './connection.php';
 
-print_r($_POST);
+$themesToUpdate = $_POST['themeAccept'];
+
+if ($_POST['themeDecision'] === 'Одобрить')
+{
+    $acceptThemes = $pdo -> prepare("UPDATE ".dbname.".`themes` SET `status`= 2 WHERE `id` = :themeId");
+
+    foreach ($themesToUpdate as $key => $theme) {
+        $acceptThemes->execute(array('themeId' => $themesToUpdate[$key]));
+    }
+}
+else if ($_POST['themeDecision'] === 'Отклонить')
+{
+    $acceptThemes = $pdo -> prepare("UPDATE ".dbname.".`themes` SET `status`= 3 WHERE `id` = :themeId");
+    
+    foreach ($themesToUpdate as $key => $theme) {
+        $acceptThemes->execute(array('themeId' => $themesToUpdate[$key]));
+    }
+}
+
+header('Location: ./../pages/admin/all_themes.php');
 
 ?>
 

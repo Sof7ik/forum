@@ -97,6 +97,19 @@ input.button, a.button
 
         padding: 10px 20px;
     }
+
+    &.inactive
+    {
+        cursor: not-allowed;
+        opacity: 0.5;
+
+        &:hover
+        {
+            color: #fff;
+            background-color: $blueColor;
+            padding: 10px;
+        }
+    }
 }
 
 span.theme-author
@@ -113,4 +126,46 @@ span.theme-date
     color: $greyColor;
 
     margin-left: 15px;
+}
+
+p.error-message, p.success-message
+{
+    text-align: center;
+    width: max-content;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+p.error-message
+{
+    border: 1px solid red;
+    box-shadow: 0px 0px 10px 2px rgb(206, 175, 175);
+    background-color: rgb(241, 83, 83);
+    padding: 10px;
+}
+
+p.success-message
+{
+    border: 1px solid rgb(0, 255, 85);
+    box-shadow: 0px 0px 10px 2px rgb(142, 226, 167);
+    background-color: rgb(27, 202, 36);
+    color: #fff;
+}
+
+.nav-button
+{
+    margin-right: 10px;
+
+    transition: all .2s;
+
+    &:last-child
+    {
+        margin-right: 0;
+    }
+
+    &:hover
+    {
+        color: $blueColor;
+    }
 }

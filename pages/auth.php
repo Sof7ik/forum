@@ -34,9 +34,15 @@ if(!empty($_COOKIE['user']))
             <img src="/img/logo.png" alt="logo" class="reg-logo">
 
             <?php
-            echo "<pre>";
-            print_r(unserialize($_COOKIE['errors']));
-            echo "</pre>";
+            $errors = unserialize($_COOKIE['errors']);
+            if (!empty($errors['authErrors']))
+            {
+                foreach ($errors['authErrors'] as $key => $error) {
+                    ?>
+                    <p class="error-message"><?=$error['message']?></p>
+                    <?php
+                }
+            }
             ?>
 
             <form action="./../php/auth.php" method="post" class="reg-form">

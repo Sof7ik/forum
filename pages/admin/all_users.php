@@ -2,7 +2,7 @@
 $user = unserialize($_COOKIE['user']);
 if ($user['role'] !== 1)
 {
-    header('Location: ./../../index.php');
+    header('Location: /index.php');
 } 
 ?>
 
@@ -21,7 +21,7 @@ if ($user['role'] !== 1)
     <meta http-equiv='content-language' content='ru'/>
     <meta http-equiv='pragma' content='no-cache'/>
 
-    <title>Все темы форума - Пульс Ивантеевки</title>
+    <title>Все пользователи - Пульс Ивантеевки</title>
 
     <link rel='stylesheet' href='/styles/style.css'>
 
@@ -29,128 +29,22 @@ if ($user['role'] !== 1)
 </head>
 <body>
     <?require './../header.php'; ?>
+
+    <?include_once './admin-nav.html';?>
     
     <main class="themes">
         <div class="container">
 
             <div class="themes-wrapper" style="padding-top: 50px;">
 
-                <form action="" method="post">
+                <form action="/php/updateUsers.php" method="post">
                     <div class="toolbar">
                         <p style="margin-bottom: 10px;">С выделенными:</p>
-                        <input type="submit" class="button" value="Заблокировать">
-                        <input type="submit" class="button" value="Разблокировать">
+                        <input type="submit" class="button" value="Заблокировать" name="userDecision">
+                        <input type="submit" class="button" value="Разблокировать" name="userDecision">
                     </div>
 
-                    <div class="theme theme-admin">
-                        <div class="theme-select">
-                            <input type="checkbox" name="usersAccept[]" id="">
-                        </div>
-                        
-                        <div class="theme-info">
-                            <h3 class="theme-name">Имя автора</h3>
-                            <p class="theme-text">Заблокирован/Раблокирован</p>
-                        </div>
-                    </div>
-
-                    <div class="theme theme-admin">
-                        <div class="theme-select">
-                            <input type="checkbox" name="usersAccept[]" id="">
-                        </div>
-                        
-                        <div class="theme-info">
-                            <h3 class="theme-name">Имя автора</h3>
-                            <p class="theme-text">Заблокирован/Раблокирован</p>
-                        </div>
-                    </div>
-
-                    <div class="theme theme-admin">
-                        <div class="theme-select">
-                            <input type="checkbox" name="usersAccept[]" id="">
-                        </div>
-                        
-                        <div class="theme-info">
-                            <h3 class="theme-name">Имя автора</h3>
-                            <p class="theme-text">Заблокирован/Раблокирован</p>
-                        </div>
-                    </div>
-
-                    <div class="theme theme-admin">
-                        <div class="theme-select">
-                            <input type="checkbox" name="usersAccept[]" id="">
-                        </div>
-                        
-                        <div class="theme-info">
-                            <h3 class="theme-name">Имя автора</h3>
-                            <p class="theme-text">Заблокирован/Раблокирован</p>
-                        </div>
-                    </div>
-
-                    <div class="theme theme-admin">
-                        <div class="theme-select">
-                            <input type="checkbox" name="usersAccept[]" id="">
-                        </div>
-                        
-                        <div class="theme-info">
-                            <h3 class="theme-name">Имя автора</h3>
-                            <p class="theme-text">Заблокирован/Раблокирован</p>
-                        </div>
-                    </div>
-
-                    <div class="theme theme-admin">
-                        <div class="theme-select">
-                            <input type="checkbox" name="usersAccept[]" id="">
-                        </div>
-                        
-                        <div class="theme-info">
-                            <h3 class="theme-name">Имя автора</h3>
-                            <p class="theme-text">Заблокирован/Раблокирован</p>
-                        </div>
-                    </div>
-
-                    <div class="theme theme-admin">
-                        <div class="theme-select">
-                            <input type="checkbox" name="usersAccept[]" id="">
-                        </div>
-                        
-                        <div class="theme-info">
-                            <h3 class="theme-name">Имя автора</h3>
-                            <p class="theme-text">Заблокирован/Раблокирован</p>
-                        </div>
-                    </div>
-
-                    <div class="theme theme-admin">
-                        <div class="theme-select">
-                            <input type="checkbox" name="usersAccept[]" id="">
-                        </div>
-                        
-                        <div class="theme-info">
-                            <h3 class="theme-name">Имя автора</h3>
-                            <p class="theme-text">Заблокирован/Раблокирован</p>
-                        </div>
-                    </div>
-
-                    <div class="theme theme-admin">
-                        <div class="theme-select">
-                            <input type="checkbox" name="usersAccept[]" id="">
-                        </div>
-                        
-                        <div class="theme-info">
-                            <h3 class="theme-name">Имя автора</h3>
-                            <p class="theme-text">Заблокирован/Раблокирован</p>
-                        </div>
-                    </div>
-
-                    <div class="theme theme-admin">
-                        <div class="theme-select">
-                            <input type="checkbox" name="usersAccept[]" id="">
-                        </div>
-                        
-                        <div class="theme-info">
-                            <h3 class="theme-name">Имя автора</h3>
-                            <p class="theme-text">Заблокирован/Раблокирован</p>
-                        </div>
-                    </div>
+                    <?require_once './../../php/selectAllUsers.php'?>
                 </form>
 
             </div>

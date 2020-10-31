@@ -5,6 +5,18 @@ div.toolbar
     margin-bottom: 20px;
 }
 
+div.admin-nav
+{
+    background-color: rgb(46, 46, 46);
+
+    padding: 10px;
+
+    .container
+    {
+        @include flex(row wrap, flex-start, center);
+    }
+}
+
 div.theme-admin
 {
     @include flex(row nowrap, flex-start, center);

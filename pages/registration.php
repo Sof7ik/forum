@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang='ru'>
 <head>
@@ -18,8 +16,6 @@
     <title>Регистрация - Пульс Ивантеевки</title>
 
     <link rel='stylesheet' href='/styles/style.css'>
-
-    <script src='' defer></script>
 </head>
 <body>
     <?php require './header.php'; ?>
@@ -30,7 +26,21 @@
 
             <img src="/img/logo.png" alt="logo" class="reg-logo">
 
-            <form action="" method="post" class="reg-form">
+            <?php
+            $errors = unserialize($_COOKIE['errors']);
+            if (!empty($errors['regErrors']))
+            {
+                foreach ($errors['regErrors'] as $key => $error) {
+                    ?>
+                    <p class="error-message"><?=$error['message']?></p>
+                    <?php
+                }
+            }
+            ?>
+
+            <p class="no-pass"></p>
+
+            <form action="/php/registration.php" method="post" class="reg-form" id="regForm">
 
                 <div class="input-wrapper">
                     <label for="userEmail">Email<span class="required"> *</span></label>
@@ -52,6 +62,11 @@
                     <input type="password" name="userPass" id="userPassword" required>
                 </div>
 
+                <div class="input-wrapper">
+                    <label for="userPassword">Повторите пароль<span class="required"> *</span></label>
+                    <input type="password" name="userPass2" id="userPassword2" required>
+                </div>
+
                 <input type="submit" value="Зарегистрироваться!" class="button submit-button">
 
             </form>
@@ -61,6 +76,8 @@
         </div>
 
     </main>
+
+    <script src='/js/reg.js' defer></script>
 
 </body>
 </html>

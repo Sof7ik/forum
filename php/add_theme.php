@@ -12,7 +12,7 @@ $newTheme = $pdo->prepare(
         `themes`
             (`id`, `name`, `description`, `date`, `author`, `status`) 
     VALUES 
-            (NULL, :name, :desc, NOW(), :userId, 3)");
+            (NULL, :name, :desc, NOW(), :userId, 1)");
 
 $themeInfo = ['name' => $name, 'desc' => $themeDesc, 'userId' => $userId];
 

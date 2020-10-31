@@ -23,26 +23,28 @@
     <div class="container">
     
         <main class="my-theme">
+            <?
+                $user = unserialize($_COOKIE['user']);
+                $userStatus = $user['status'];
 
-            <a href="./add_theme.php" class="button new-theme">Создать новую тему</a>
+                if($userStatus === 1)
+                {
+                    ?>
+                        <a href="./add_theme.php" class="button new-theme">Создать новую тему</a>
+                    <?
+                }
+                else
+                {
+                    ?>
+                        <abbr title="Вы не можете создавать темы, так как аминистраторы форума временно заблокировали Вам эту возможность">
+                            <a class="button new-theme inactive">Создать новую тему</a>
+                        </abbr>
+                    <?
+                }
+            ?>
 
             <?php
             require './../php/my_themes.php';
-            $counter = 1;
-            $index = 1;
-            while ($myTheme = $selectMyThemes->fetch()) {
-                $date = new DateTime($myTheme['date']);
-                $counter =  $counter === 1 ? 2 : 1;
-                ?>
-                    <div class="theme-title my-theme-wrapper-<?=$counter?>">
-                        <h3><?=$myTheme['theme-name']?> <span>от</span> <span class="theme-date"><?=$date->format('d-m-Y h:i:s')?></span> </h3>
-                        <span class="theme-status"><?=$myTheme['status-name']?></span>
-                        <p class="theme-desc"><?=$myTheme['description']?></p>
-                    </div>
-                <?php
-                $index++;
-            }
-
             ?>
 
             <!-- <a href="/pages/theme.php" class="theme-url" id="theme_id-12">

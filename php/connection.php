@@ -6,8 +6,6 @@ define('user', 'root');
 define('pass', '');
 define('charset', 'utf8');
 
-echo $host;
-
 # MySQL через PDO_MYSQL 
 // $pdo = null; - закрывает подключение к БД
 

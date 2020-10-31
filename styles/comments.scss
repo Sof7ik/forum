@@ -71,3 +71,24 @@ section.comment
         text-indent: 15px;
     }
 }
+
+form.comment-form
+{
+    margin-top: 50px;
+    
+    textarea
+    {
+        width: 80%;
+        min-width: 220px;
+        max-width: 80%;
+        height: 150px;
+
+        padding: 5px 5px 5px 0;
+        margin-top: 5px;
+
+        font-size: 18px;
+        text-indent: 15px;
+
+        resize: vertical;
+    }
+}

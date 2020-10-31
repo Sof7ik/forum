@@ -1,44 +1,3 @@
-<?php
-
-$themeId = $_GET['id'];
-
-require_once dirname(__DIR__) . '/php/connection.php';
-
-$selectThemeInfo = $pdo->prepare(
-    "SELECT
-        `themes`.`name`,
-        `themes`.`description`,
-        `themes`.`date`,
-        `users`.`name`,
-        `users`.`surname`
-    FROM
-        $dbname.`themes`,
-        $dbname.`users`
-    WHERE
-        `themes`.`author` = `users`.`id` AND
-        `themes`.`id` = :themeId
-    ");
-$selectThemeComments = $pdo->prepare(
-    "SELECT
-        `users`.`name`,
-        `users`.`surname`,
-        `comments`.`date`,
-        `comments`.`text`
-    FROM
-        $dbname.`users`,
-        $dbname.`comments`,
-        $dbname.`themes`
-    WHERE
-        `comments`.`author` = `users`.`id` AND
-        `comments`.`id_theme` = `themes`.`id` AND
-        `comments`.`id_theme` = :themeId
-    ");
-
-
-$selectThemeInfo->execute(array('themeId' => $themeId));
-$selectThemeComments->execute(array('themeId' => $themeId));
-?>
-
 <!DOCTYPE html>
 <html lang='ru'>
 <head>
@@ -56,7 +15,6 @@ $selectThemeComments->execute(array('themeId' => $themeId));
 
     <title>
         <?php
-            // while($row = $selectThemeInfo->fetch(PDO::FETCH_LAZY))
             echo 'Тема - Пульс Ивантеевки';
         ?>
     </title>
@@ -70,65 +28,43 @@ $selectThemeComments->execute(array('themeId' => $themeId));
 
         <div class="container">
 
-            <?
-                while($theme = $selectThemeInfo->fetch(PDO::FETCH_LAZY))
-                {
-                    $date = new DateTime($theme['date']);
-                    ?>
-                        <div class="theme-title">
-                            <h3><?=$theme['name']?><span> от</span> <span class="theme-date"><?=$date->format('d.m.Y h:i')?></span> </h3>
-                            <p class="theme-desc"><?=$theme['description']?></p>
-                        </div>
+            <?php require_once './../php/watch_theme.php';?>
 
-                    <?
-                }
-            ?>
-
-            <section class="theme-comments">
-
-                <h2>Ответы в теме</h2>
+            <form action='/php/sendComment.php?themeId=<?=$themeId?>' method='post' class="comment-form">
+                <div class="input-wrapper">
+                    <label for="userPassword">Текст комментария<span class="required"> *</span></label>
+                    <textarea name="commentText" id="commentText" required></textarea>
+                </div>
 
                 <?
-
-                    while($comment = $selectThemeComments->fetch(PDO::FETCH_LAZY))
+                    $userStatus = unserialize($_COOKIE['user'])['status'];
+                    if (empty($_COOKIE['user']))
                     {
-                        $date = new DateTime($comment['date']);
                         ?>
-                            <section class="comment">
-                                <h3 class="comment-author"><?echo $comment['name'].' '.$comment['surname']?> <span class="theme-date"><?=$date->format('d.m.Y h:i')?></span></h3>
-                                <article><?=$comment['text']?></article>
-                            </section>
+                        <abbr title="Чтобы оставлять ответы в темах, необходимо авторизоваться">
+                            <input type="submit" value="Отправить комментарий" disabled class="button submit-button inactive">
+                        </abbr>
+                        <p style="text-align: left; margin-top: 5px;" class="not-registered"><a href="/pages/auth.php">Войти</a></p>
                         <?
                     }
-                
+
+                    if ($userStatus === 2)
+                    {
+                        //заблокирован
+                        ?>
+                        <abbr title="Вы не можете оставлять ответы в темах, так как аминистраторы форума временно заблокировали Вам эту возможность">
+                            <input type="submit" value="Отправить комментарий" disabled class="button submit-button inactive">
+                        </abbr>
+                        <?
+                    }
+                    else if ($userStatus === 1)
+                    {
+                        //разблокирован
+                        ?><input type="submit" value="Отправить комментарий" class="button submit-button"><?
+                    }
                 ?>
-
-                <!-- <section class="comment">
-                    <h3 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h3>
-                    <article>Текст ответа</article>
-                </section>
-
-                <section class="comment">
-                    <h3 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h3>
-                    <article>Текст ответа</article>
-                </section>
-
-                <section class="comment">
-                    <h3 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h3>
-                    <article>Текст ответа</article>
-                </section>
-
-                <section class="comment">
-                    <h3 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h3>
-                    <article>Текст ответа</article>
-                </section>
-
-                <section class="comment">
-                    <h3 class="comment-author">Автор ответа <span class="theme-date">дд.мм.гггг чч:мм</span></h3>
-                    <article>Текст ответа</article>
-                </section> -->
-
-            </section>
+                
+            </form>
 
         </div>
 
