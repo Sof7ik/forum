@@ -25,15 +25,22 @@
     <main class="add-theme">
 
         <div class="container">
-            <form action="./../php/add_theme.php" method="post" class="add-theme-form">
+            <form enctype="multipart/form-data" action="./../php/add_theme.php" method="post" class="add-theme-form">
                 <div class="input-wrapper">
                     <label for="themeName">Название темы<span class="required"> *</span></label>
                     <input type="text" name="themeName" id="themeName" required>
                 </div>
 
                 <div class="input-wrapper">
-                    <label for="userEmail">Описание темы<span class="required"> *</span></label>
+                    <label for="themeDesc">Описание темы<span class="required"> *</span></label>
                     <textarea name="themeDesc" id="themeDesc" required></textarea>
+                </div>
+
+                <div class="input-wrapper">
+                    <label for="">Изображение<span class="required"> *</span></label>
+                    <label for="themeThumbnail" class="file-label">Обзор</label>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
+                    <input type="file" name="themeThumbnail" id="themeThumbnail" style="display: none;">
                 </div>
 
                 <input type="submit" value="Создать тему" class="button">

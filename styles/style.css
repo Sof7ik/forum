@@ -1,3 +1,28 @@
+label.file-label, input.button, a.button {
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #0955f8;
+  border-radius: 10px;
+  border: 1px solid #0955f8;
+  transition: all 0.3s;
+}
+label.file-label:hover, input.button:hover, a.button:hover {
+  color: #0955f8;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+label.inactive.file-label, input.inactive.button, a.inactive.button {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+label.inactive.file-label:hover, input.inactive.button:hover, a.inactive.button:hover {
+  color: #fff;
+  background-color: #0955f8;
+  padding: 10px;
+}
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -61,31 +86,6 @@ textarea:hover {
   background-color: #fff;
 }
 
-input.button, a.button {
-  padding: 10px;
-  color: #fff;
-  font-size: 16px;
-  background-color: #0955f8;
-  border-radius: 10px;
-  border: 1px solid #0955f8;
-  transition: all 0.3s;
-}
-input.button:hover, a.button:hover {
-  color: #0955f8;
-  background-color: #fff;
-  cursor: pointer;
-  padding: 10px 20px;
-}
-input.button.inactive, a.button.inactive {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-input.button.inactive:hover, a.button.inactive:hover {
-  color: #fff;
-  background-color: #0955f8;
-  padding: 10px;
-}
-
 span.theme-author {
   color: #999999;
   font-size: 16px;
@@ -131,6 +131,39 @@ p.success-message {
 }
 .nav-button:hover {
   color: #0955f8;
+}
+
+label.file-label {
+  margin-top: 10px;
+}
+
+img.theme-sumbnail {
+  width: 200px;
+}
+
+input.button, a.button, label.file-label {
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #0955f8;
+  border-radius: 10px;
+  border: 1px solid #0955f8;
+  transition: all 0.3s;
+}
+input.button:hover, a.button:hover, label.file-label:hover {
+  color: #0955f8;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+input.inactive.button, a.inactive.button, label.inactive.file-label {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+  color: #fff;
+  background-color: #0955f8;
+  padding: 10px;
 }
 
 header {
@@ -222,6 +255,31 @@ div.dropdown a.dropdown-item:last-child {
   margin-bottom: unset;
 }
 
+input.button, a.button, label.file-label {
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #0955f8;
+  border-radius: 10px;
+  border: 1px solid #0955f8;
+  transition: all 0.3s;
+}
+input.button:hover, a.button:hover, label.file-label:hover {
+  color: #0955f8;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+input.inactive.button, a.inactive.button, label.inactive.file-label {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+  color: #fff;
+  background-color: #0955f8;
+  padding: 10px;
+}
+
 div.themes-title {
   display: flex;
   flex-flow: row wrap;
@@ -309,6 +367,31 @@ ol.sub-list {
   list-style-type: none;
 }
 
+input.button, a.button, label.file-label {
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #0955f8;
+  border-radius: 10px;
+  border: 1px solid #0955f8;
+  transition: all 0.3s;
+}
+input.button:hover, a.button:hover, label.file-label:hover {
+  color: #0955f8;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+input.inactive.button, a.inactive.button, label.inactive.file-label {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+  color: #fff;
+  background-color: #0955f8;
+  padding: 10px;
+}
+
 img.reg-logo {
   width: 100px;
   margin: 0 auto;
@@ -353,6 +436,31 @@ p.not-registered {
 }
 p.not-registered a {
   color: #0955f8;
+}
+
+input.button, a.button, label.file-label {
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #0955f8;
+  border-radius: 10px;
+  border: 1px solid #0955f8;
+  transition: all 0.3s;
+}
+input.button:hover, a.button:hover, label.file-label:hover {
+  color: #0955f8;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+input.inactive.button, a.inactive.button, label.inactive.file-label {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+  color: #fff;
+  background-color: #0955f8;
+  padding: 10px;
 }
 
 main.theme-main {
@@ -419,6 +527,31 @@ form.comment-form textarea {
   resize: vertical;
 }
 
+input.button, a.button, label.file-label {
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #0955f8;
+  border-radius: 10px;
+  border: 1px solid #0955f8;
+  transition: all 0.3s;
+}
+input.button:hover, a.button:hover, label.file-label:hover {
+  color: #0955f8;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+input.inactive.button, a.inactive.button, label.inactive.file-label {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+  color: #fff;
+  background-color: #0955f8;
+  padding: 10px;
+}
+
 a.new-theme {
   display: inline-block;
   margin-bottom: 20px;
@@ -451,6 +584,31 @@ span.theme-status {
   margin-left: 20px;
   font-size: 13px;
   color: #999999;
+}
+
+input.button, a.button, label.file-label {
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #0955f8;
+  border-radius: 10px;
+  border: 1px solid #0955f8;
+  transition: all 0.3s;
+}
+input.button:hover, a.button:hover, label.file-label:hover {
+  color: #0955f8;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+input.inactive.button, a.inactive.button, label.inactive.file-label {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+  color: #fff;
+  background-color: #0955f8;
+  padding: 10px;
 }
 
 main.add-theme {
@@ -473,6 +631,31 @@ textarea#themeDesc {
   padding: 5px 0;
 }
 
+input.button, a.button, label.file-label {
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #0955f8;
+  border-radius: 10px;
+  border: 1px solid #0955f8;
+  transition: all 0.3s;
+}
+input.button:hover, a.button:hover, label.file-label:hover {
+  color: #0955f8;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+input.inactive.button, a.inactive.button, label.inactive.file-label {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+  color: #fff;
+  background-color: #0955f8;
+  padding: 10px;
+}
+
 a.new-theme {
   display: inline-block;
   margin-bottom: 20px;
@@ -505,6 +688,31 @@ span.theme-status {
   margin-left: 20px;
   font-size: 13px;
   color: #999999;
+}
+
+input.button, a.button, label.file-label {
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #0955f8;
+  border-radius: 10px;
+  border: 1px solid #0955f8;
+  transition: all 0.3s;
+}
+input.button:hover, a.button:hover, label.file-label:hover {
+  color: #0955f8;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+input.inactive.button, a.inactive.button, label.inactive.file-label {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+  color: #fff;
+  background-color: #0955f8;
+  padding: 10px;
 }
 
 div.toolbar {

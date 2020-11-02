@@ -6,6 +6,7 @@ $selectTheme=$pdo->query(
         `themes`.`id` AS 'theme-id',
         `themes`.`name` AS 'theme-name',
         `themes`.`description` AS 'theme-desc',
+        `themes`.`image`,
         `themes`.`date` AS 'theme-date',
         `theme-status`.`name` AS 'theme-status',
         `users`.`name` AS 'theme-author-name',
@@ -57,6 +58,8 @@ $selectTheme=$pdo->query(
                 </h3>
 
                 <span class="theme-author">Автор - <?echo $theme['theme-author-name'].' '.$theme['theme-author-surname']?></span>
+
+                <img src="<?='\theme-thumbnail\\'.$theme['image']?>" alt="theme-thumbnail" class="theme-sumbnail">
 
                 <p class="theme-text"><?=$theme['theme-desc']?></p>
 

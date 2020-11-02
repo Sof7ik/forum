@@ -14,3 +14,40 @@ $greyColor: rgb(153, 153, 153);
     grid-template-columns: $gtc;
     grid-gap: $gg;
 }
+
+%buttons
+{
+    padding: 10px;
+
+    color: #fff;
+    font-size: 16px;
+
+    background-color: $blueColor;
+
+    border-radius: 10px;
+    border: 1px solid $blueColor;
+
+    transition: all .3s;
+
+    &:hover
+    {
+        color: $blueColor;
+        background-color: #fff;
+        cursor: pointer;
+
+        padding: 10px 20px;
+    }
+
+    &.inactive
+    {
+        cursor: not-allowed;
+        opacity: 0.5;
+
+        &:hover
+        {
+            color: #fff;
+            background-color: $blueColor;
+            padding: 10px;
+        }
+    }
+}

@@ -5,19 +5,29 @@ $name = $_POST['themeName'];
 $themeDesc = $_POST['themeDesc'];
 $userId = $user['id'];
 
-require_once './connection.php';
+$file = $_FILES['themeThumbnail'];
 
-$newTheme = $pdo->prepare(
-    "INSERT INTO 
-        `themes`
-            (`id`, `name`, `description`, `date`, `author`, `status`) 
-    VALUES 
-            (NULL, :name, :desc, NOW(), :userId, 1)");
-
-$themeInfo = ['name' => $name, 'desc' => $themeDesc, 'userId' => $userId];
-
-if ($newTheme->execute($themeInfo))
+if (!file_exists(dirname(__DIR__) . '\theme-thumbnail\\'.$file['name']))
 {
-    header('Location: ./../pages/my_themes.php');
+    if(move_uploaded_file($file['tmp_name'], dirname(__DIR__) . '\theme-thumbnail\\' . $file['name']))
+    {
+        require_once './connection.php';
+
+        $newTheme = $pdo->prepare(
+            "INSERT INTO 
+                `themes`
+                    (`id`, `name`, `description`, `image`, `date`, `author`, `status`) 
+            VALUES 
+                    (NULL, :name, :desc, :filename , NOW(), :userId, 1)");
+
+        $themeInfo = ['name' => $name, 'desc' => $themeDesc, 'filename' => $file['name'],'userId' => $userId];
+
+        if ($newTheme->execute($themeInfo))
+        {
+            header('Location: ./../pages/my_themes.php');
+        }
+    }
 }
+
+
 ?>
