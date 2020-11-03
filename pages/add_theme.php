@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="input-wrapper">
-                    <label for="">Изображение<span class="required"> *</span></label>
+                    <label for="">Изображения</label>
                     <label for="themeThumbnail" class="file-label">Обзор</label>
                     <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
                     <input type="file" multiple name="themeThumbnail[]" id="themeThumbnail" accept="image" required style="display: none;">

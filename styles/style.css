@@ -59,7 +59,7 @@ a.add-new:hover {
   background-color: #0955f8;
 }
 
-input:focus {
+input:focus, button:focus {
   outline: none;
 }
 
@@ -637,6 +637,10 @@ textarea#themeDesc {
   max-height: 300px;
   text-indent: 15px;
   padding: 5px 0;
+}
+
+div.buttons {
+  width: 100%;
 }
 
 input.add-theme-button {
