@@ -1,4 +1,4 @@
-label.file-label, input.button, a.button {
+label.file-label, input.button, a.button, button.button {
   padding: 10px;
   color: #fff;
   font-size: 16px;
@@ -7,17 +7,17 @@ label.file-label, input.button, a.button {
   border: 1px solid #0955f8;
   transition: all 0.3s;
 }
-label.file-label:hover, input.button:hover, a.button:hover {
+label.file-label:hover, input.button:hover, a.button:hover, button.button:hover {
   color: #0955f8;
   background-color: #fff;
   cursor: pointer;
   padding: 10px 20px;
 }
-label.inactive.file-label, input.inactive.button, a.inactive.button {
+label.inactive.file-label, input.inactive.button, a.inactive.button, button.inactive.button {
   cursor: not-allowed;
   opacity: 0.5;
 }
-label.inactive.file-label:hover, input.inactive.button:hover, a.inactive.button:hover {
+label.inactive.file-label:hover, input.inactive.button:hover, a.inactive.button:hover, button.inactive.button:hover {
   color: #fff;
   background-color: #0955f8;
   padding: 10px;
@@ -141,7 +141,7 @@ img.theme-sumbnail {
   width: 200px;
 }
 
-input.button, a.button, label.file-label {
+input.button, a.button, button.button, label.file-label {
   padding: 10px;
   color: #fff;
   font-size: 16px;
@@ -150,17 +150,17 @@ input.button, a.button, label.file-label {
   border: 1px solid #0955f8;
   transition: all 0.3s;
 }
-input.button:hover, a.button:hover, label.file-label:hover {
+input.button:hover, a.button:hover, button.button:hover, label.file-label:hover {
   color: #0955f8;
   background-color: #fff;
   cursor: pointer;
   padding: 10px 20px;
 }
-input.inactive.button, a.inactive.button, label.inactive.file-label {
+input.inactive.button, a.inactive.button, button.inactive.button, label.inactive.file-label {
   cursor: not-allowed;
   opacity: 0.5;
 }
-input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+input.inactive.button:hover, a.inactive.button:hover, button.inactive.button:hover, label.inactive.file-label:hover {
   color: #fff;
   background-color: #0955f8;
   padding: 10px;
@@ -255,7 +255,7 @@ div.dropdown a.dropdown-item:last-child {
   margin-bottom: unset;
 }
 
-input.button, a.button, label.file-label {
+input.button, a.button, button.button, label.file-label {
   padding: 10px;
   color: #fff;
   font-size: 16px;
@@ -264,17 +264,17 @@ input.button, a.button, label.file-label {
   border: 1px solid #0955f8;
   transition: all 0.3s;
 }
-input.button:hover, a.button:hover, label.file-label:hover {
+input.button:hover, a.button:hover, button.button:hover, label.file-label:hover {
   color: #0955f8;
   background-color: #fff;
   cursor: pointer;
   padding: 10px 20px;
 }
-input.inactive.button, a.inactive.button, label.inactive.file-label {
+input.inactive.button, a.inactive.button, button.inactive.button, label.inactive.file-label {
   cursor: not-allowed;
   opacity: 0.5;
 }
-input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+input.inactive.button:hover, a.inactive.button:hover, button.inactive.button:hover, label.inactive.file-label:hover {
   color: #fff;
   background-color: #0955f8;
   padding: 10px;
@@ -334,6 +334,14 @@ div.theme h3 {
 div.theme p, div.theme span.theme-author {
   margin-bottom: 15px;
 }
+div.theme div.img-wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
 div.theme p.theme-text {
   text-indent: 15px;
 }
@@ -367,7 +375,7 @@ ol.sub-list {
   list-style-type: none;
 }
 
-input.button, a.button, label.file-label {
+input.button, a.button, button.button, label.file-label {
   padding: 10px;
   color: #fff;
   font-size: 16px;
@@ -376,17 +384,17 @@ input.button, a.button, label.file-label {
   border: 1px solid #0955f8;
   transition: all 0.3s;
 }
-input.button:hover, a.button:hover, label.file-label:hover {
+input.button:hover, a.button:hover, button.button:hover, label.file-label:hover {
   color: #0955f8;
   background-color: #fff;
   cursor: pointer;
   padding: 10px 20px;
 }
-input.inactive.button, a.inactive.button, label.inactive.file-label {
+input.inactive.button, a.inactive.button, button.inactive.button, label.inactive.file-label {
   cursor: not-allowed;
   opacity: 0.5;
 }
-input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+input.inactive.button:hover, a.inactive.button:hover, button.inactive.button:hover, label.inactive.file-label:hover {
   color: #fff;
   background-color: #0955f8;
   padding: 10px;
@@ -438,7 +446,7 @@ p.not-registered a {
   color: #0955f8;
 }
 
-input.button, a.button, label.file-label {
+input.button, a.button, button.button, label.file-label {
   padding: 10px;
   color: #fff;
   font-size: 16px;
@@ -447,17 +455,17 @@ input.button, a.button, label.file-label {
   border: 1px solid #0955f8;
   transition: all 0.3s;
 }
-input.button:hover, a.button:hover, label.file-label:hover {
+input.button:hover, a.button:hover, button.button:hover, label.file-label:hover {
   color: #0955f8;
   background-color: #fff;
   cursor: pointer;
   padding: 10px 20px;
 }
-input.inactive.button, a.inactive.button, label.inactive.file-label {
+input.inactive.button, a.inactive.button, button.inactive.button, label.inactive.file-label {
   cursor: not-allowed;
   opacity: 0.5;
 }
-input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+input.inactive.button:hover, a.inactive.button:hover, button.inactive.button:hover, label.inactive.file-label:hover {
   color: #fff;
   background-color: #0955f8;
   padding: 10px;
@@ -527,7 +535,7 @@ form.comment-form textarea {
   resize: vertical;
 }
 
-input.button, a.button, label.file-label {
+input.button, a.button, button.button, label.file-label {
   padding: 10px;
   color: #fff;
   font-size: 16px;
@@ -536,17 +544,17 @@ input.button, a.button, label.file-label {
   border: 1px solid #0955f8;
   transition: all 0.3s;
 }
-input.button:hover, a.button:hover, label.file-label:hover {
+input.button:hover, a.button:hover, button.button:hover, label.file-label:hover {
   color: #0955f8;
   background-color: #fff;
   cursor: pointer;
   padding: 10px 20px;
 }
-input.inactive.button, a.inactive.button, label.inactive.file-label {
+input.inactive.button, a.inactive.button, button.inactive.button, label.inactive.file-label {
   cursor: not-allowed;
   opacity: 0.5;
 }
-input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+input.inactive.button:hover, a.inactive.button:hover, button.inactive.button:hover, label.inactive.file-label:hover {
   color: #fff;
   background-color: #0955f8;
   padding: 10px;
@@ -586,7 +594,7 @@ span.theme-status {
   color: #999999;
 }
 
-input.button, a.button, label.file-label {
+input.button, a.button, button.button, label.file-label {
   padding: 10px;
   color: #fff;
   font-size: 16px;
@@ -595,17 +603,17 @@ input.button, a.button, label.file-label {
   border: 1px solid #0955f8;
   transition: all 0.3s;
 }
-input.button:hover, a.button:hover, label.file-label:hover {
+input.button:hover, a.button:hover, button.button:hover, label.file-label:hover {
   color: #0955f8;
   background-color: #fff;
   cursor: pointer;
   padding: 10px 20px;
 }
-input.inactive.button, a.inactive.button, label.inactive.file-label {
+input.inactive.button, a.inactive.button, button.inactive.button, label.inactive.file-label {
   cursor: not-allowed;
   opacity: 0.5;
 }
-input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+input.inactive.button:hover, a.inactive.button:hover, button.inactive.button:hover, label.inactive.file-label:hover {
   color: #fff;
   background-color: #0955f8;
   padding: 10px;
@@ -631,7 +639,19 @@ textarea#themeDesc {
   padding: 5px 0;
 }
 
-input.button, a.button, label.file-label {
+input.add-theme-button {
+  margin-top: 10px;
+}
+
+img.preview-image {
+  width: 200px;
+  margin-right: 10px;
+}
+img.preview-image:last-child {
+  margin-right: unset;
+}
+
+input.button, a.button, button.button, label.file-label {
   padding: 10px;
   color: #fff;
   font-size: 16px;
@@ -640,17 +660,17 @@ input.button, a.button, label.file-label {
   border: 1px solid #0955f8;
   transition: all 0.3s;
 }
-input.button:hover, a.button:hover, label.file-label:hover {
+input.button:hover, a.button:hover, button.button:hover, label.file-label:hover {
   color: #0955f8;
   background-color: #fff;
   cursor: pointer;
   padding: 10px 20px;
 }
-input.inactive.button, a.inactive.button, label.inactive.file-label {
+input.inactive.button, a.inactive.button, button.inactive.button, label.inactive.file-label {
   cursor: not-allowed;
   opacity: 0.5;
 }
-input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+input.inactive.button:hover, a.inactive.button:hover, button.inactive.button:hover, label.inactive.file-label:hover {
   color: #fff;
   background-color: #0955f8;
   padding: 10px;
@@ -690,7 +710,7 @@ span.theme-status {
   color: #999999;
 }
 
-input.button, a.button, label.file-label {
+input.button, a.button, button.button, label.file-label {
   padding: 10px;
   color: #fff;
   font-size: 16px;
@@ -699,17 +719,17 @@ input.button, a.button, label.file-label {
   border: 1px solid #0955f8;
   transition: all 0.3s;
 }
-input.button:hover, a.button:hover, label.file-label:hover {
+input.button:hover, a.button:hover, button.button:hover, label.file-label:hover {
   color: #0955f8;
   background-color: #fff;
   cursor: pointer;
   padding: 10px 20px;
 }
-input.inactive.button, a.inactive.button, label.inactive.file-label {
+input.inactive.button, a.inactive.button, button.inactive.button, label.inactive.file-label {
   cursor: not-allowed;
   opacity: 0.5;
 }
-input.inactive.button:hover, a.inactive.button:hover, label.inactive.file-label:hover {
+input.inactive.button:hover, a.inactive.button:hover, button.inactive.button:hover, label.inactive.file-label:hover {
   color: #fff;
   background-color: #0955f8;
   padding: 10px;

@@ -17,7 +17,7 @@
 
     <link rel='stylesheet' href='/styles/style.css'>
 
-    <script src='' defer></script>
+    <script src='/js/add-theme.js' defer></script>
 </head>
 <body>
     <?require './header.php'; ?>
@@ -40,10 +40,20 @@
                     <label for="">Изображение<span class="required"> *</span></label>
                     <label for="themeThumbnail" class="file-label">Обзор</label>
                     <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
-                    <input type="file" name="themeThumbnail" id="themeThumbnail" style="display: none;">
+                    <input type="file" multiple name="themeThumbnail[]" id="themeThumbnail" accept="image" required style="display: none;">
                 </div>
 
-                <input type="submit" value="Создать тему" class="button">
+                <p class="selected-files"></p>
+
+                <div class="image-preview">
+
+                </div>
+
+                <div class="buttons">
+                    <button class="button" id="preview-theme">Предпросмотр</button>
+                    <input type="submit" value="Создать тему" class="button add-theme-button">
+                </div>
+                
             </form>
         </div>
 

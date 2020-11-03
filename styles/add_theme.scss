@@ -22,3 +22,19 @@ textarea#themeDesc
 
     padding: 5px 0;
 }
+
+input.add-theme-button
+{
+    margin-top: 10px;
+}
+
+img.preview-image
+{
+    width: 200px;
+    margin-right: 10px;
+
+    &:last-child
+    {
+        margin-right: unset;
+    }
+}
