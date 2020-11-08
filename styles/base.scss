@@ -1,16 +1,23 @@
 @import './mixins.scss';
 
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
+
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 
-    font-family: 'Tahoma', sans-serif;
+    font-family: 'Oswald', sans-serif;
+}
+
+html, body
+{
+    height: 100%;
 }
 
 body
 {
-    background-color: rgb(233, 233, 233);
+    background-color: $bodyColor;
 }
 
 a {
@@ -20,6 +27,12 @@ a {
 
 ul {
     list-style-type: none;
+}
+
+main
+{
+    @include flex(row nowrap, flex-start, flex-start);
+    padding-top: 50px;
 }
 
 div.container
@@ -75,25 +88,46 @@ textarea
     }
 }
 
-input.button, a.button, button.button
+.button
 {
     @extend %buttons;
 }
 
-span.theme-author
+.button.accept
 {
-    color: $greyColor;
-    font-size: 16px;
-    font-style: italic;
+    border-color: $acceptColor;
+    background-color: $acceptColor;
 }
 
-span.theme-date
+.button.decline
 {
-    font-weight: normal;
-    font-size: 14px;
-    color: $greyColor;
+    border-color: $declineColor;
+    background-color: $declineColor;
+}
 
-    margin-left: 15px;
+// span.theme-author
+// {
+//     color: $greyColor;
+//     font-size: 16px;
+//     font-style: italic;
+// }
+
+// span.theme-date
+// {
+//     font-weight: normal;
+//     font-size: 14px;
+//     color: $greyColor;
+
+//     margin-left: 15px;
+// }
+
+span.theme-author, span.theme-date {
+    font-size: 20px;
+    font-family: "Oswald";
+    color: rgb(29, 142, 166);
+    line-height: 1.7;
+
+    display: block;
 }
 
 p.error-message, p.success-message

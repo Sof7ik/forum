@@ -40,8 +40,8 @@ if ($user['role'] !== 1)
                 <form action="./../../php/updateThemes.php" method="post">
                     <div class="toolbar">
                         <p style="margin-bottom: 10px;">С выделенными:</p>
-                        <input type="submit" class="button" value="Одобрить" name="themeDecision">
-                        <input type="submit" class="button" value="Отклонить" name="themeDecision">
+                        <input type="submit" class="button accept" value="Одобрить" name="themeDecision">
+                        <input type="submit" class="button decline" value="Отклонить" name="themeDecision">
                     </div>
 
                     <?php

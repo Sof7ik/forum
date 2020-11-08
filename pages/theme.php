@@ -24,50 +24,57 @@
 <body>
     <?php require './header.php'; ?>
 
-    <main class="theme-main">
+    <div class="container">
 
-        <div class="container">
+        <main class="theme-main">
 
-            <?php require_once './../php/watch_theme.php';?>
+            <?php require_once './aside.php';?>
 
-            <form action='/php/sendComment.php?themeId=<?=$themeId?>' method='post' class="comment-form">
-                <div class="input-wrapper">
-                    <label for="userPassword">Текст комментария<span class="required"> *</span></label>
-                    <textarea name="commentText" id="commentText" required></textarea>
-                </div>
+            <div class="theme-info-wrapper">
 
-                <?
-                    $userStatus = unserialize($_COOKIE['user'])['status'];
-                    if (empty($_COOKIE['user']))
-                    {
-                        ?>
-                        <abbr title="Чтобы оставлять ответы в темах, необходимо авторизоваться">
-                            <input type="submit" value="Отправить комментарий" disabled class="button submit-button inactive">
-                        </abbr>
-                        <p style="text-align: left; margin-top: 5px;" class="not-registered"><a href="/pages/auth.php">Войти</a></p>
-                        <?
-                    }
+                <?php require_once './../php/watch_theme.php';?>
 
-                    if ($userStatus === 2)
-                    {
-                        //заблокирован
-                        ?>
-                        <abbr title="Вы не можете оставлять ответы в темах, так как аминистраторы форума временно заблокировали Вам эту возможность">
-                            <input type="submit" value="Отправить комментарий" disabled class="button submit-button inactive">
-                        </abbr>
-                        <?
-                    }
-                    else if ($userStatus === 1)
-                    {
-                        //разблокирован
-                        ?><input type="submit" value="Отправить комментарий" class="button submit-button"><?
-                    }
-                ?>
-                
-            </form>
+                <form action='/php/sendComment.php?themeId=<?=$themeId?>' method='post' class="comment-form">
+                    <div class="input-wrapper">
+                        <label for="userPassword">Написать комментарий<span class="required"> *</span></label>
+                        <textarea name="commentText" id="commentText" required></textarea>
+                    </div>
 
-        </div>
+                    <?
+                        $userStatus = unserialize($_COOKIE['user'])['status'];
+                        if (empty($_COOKIE['user']))
+                        {
+                            ?>
+                            <abbr title="Чтобы оставлять ответы в темах, необходимо авторизоваться">
+                                <input type="submit" value="Отправить комментарий" disabled class="button submit-button inactive">
+                            </abbr>
+                            <p style="text-align: left; margin-top: 5px;" class="not-registered"><a href="/pages/auth.php">Войти</a></p>
+                            <?
+                        }
 
-    </main>
+                        if ($userStatus === 2)
+                        {
+                            //заблокирован
+                            ?>
+                            <abbr title="Вы не можете оставлять ответы в темах, так как аминистраторы форума временно заблокировали Вам эту возможность">
+                                <input type="submit" value="Отправить комментарий" disabled class="button submit-button inactive">
+                            </abbr>
+                            <?
+                        }
+                        else if ($userStatus === 1)
+                        {
+                            //разблокирован
+                            ?><input type="submit" value="Отправить комментарий" class="button submit-button"><?
+                        }
+                    ?>
+                    
+                </form>
+
+            </div>
+
+        </main>
+
+    </div>
+
 </body>
 </html>

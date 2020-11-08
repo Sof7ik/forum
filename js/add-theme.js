@@ -1,40 +1,92 @@
-const filesSelectedElem = document.querySelector('.image-preview');
-document.getElementById('themeThumbnail').addEventListener('change', event => {
-    let files = event.target.files;
+const filesSelectedElem = document.getElementById('images-preview');
 
-    if (files.length >= 5)
-    {
-        filesSelectedElem.insertAdjacentHTML('beforebegin', `<p class="error-message" style="margin: unset">Вы можете выбрать не более 4 файлов</p>`);
-        filesSelectedElem.innerHTML = '';
+function renderImages(whatToRender = '', inputFiles)
+{
+    let whereToRender = '';
+    switch (whatToRender) {
+        case 'preview':
+            whereToRender = 'theme-preview';
+            break;
+        
+        case 'images':
+            whereToRender = 'images-preview';
+            break;
 
-        setInterval( () => {
-            clearErrors();
-        }, 5000)
+        default:
+            break;
+    }
 
-    } else
-    {
-        if (document.querySelector('p.error-message'))
-        {
-            document.querySelector('p.error-message').remove();
-        }
+    for (const key in inputFiles) {
+        if (inputFiles.hasOwnProperty(key)) {
+            const element = inputFiles[key];
+            const reader = new FileReader();
+            reader.readAsDataURL(element);
 
-        for (const key in files) {
-            if (files.hasOwnProperty(key)) {
-                const element = files[key];
+            reader.onloadend = function () {
+                let img = new Image();
+                img.classList.add('preview-image');
 
-                let reader = new FileReader();
-                reader.readAsDataURL(element);
-
-                reader.onloadend = function () {
-                    let img = new Image();
-                    img.classList.add('preview-image');
-                    img.src = reader.result; 
-                    document.querySelector('div.image-preview').insertAdjacentElement('beforeend', img)
+                if (whatToRender === 'preview')
+                {
+                    img.id = 'image-theme-preview';
                 }
+
+                img.src = reader.result;
+                document.getElementById(whereToRender).insertAdjacentElement('beforeend', img)
             }
         }
     }
+}
+
+document.getElementById('themeImages').addEventListener('change', event => {
+    const files = event.target.files;
+
+    console.log(document.getElementById('images-preview').childNodes.length - 1);
+    console.log(files.length);
+    console.log('Длина', document.getElementById('images-preview').childNodes.length - 1 + files.length);
+
+    if (document.getElementById('images-preview').childNodes.lengt !== 0)
+    {
+        if(document.getElementById('images-preview').childNodes.length - 1 + files.length < 5)
+        {
+            if (files.length < 5)
+            {
+                clearErrors();
+                renderImages('images', files);
+
+            } else
+            {
+                renderError('Вы можете выбрать не более 4 файлов 1', filesSelectedElem);
+            }
+        }
+        else
+        {
+            renderError('Вы можете выбрать не более 4 файлов 2', filesSelectedElem);
+        }
+    }
+    else
+    {
+        renderError('Вы можете выбрать не более 4 файлов 3', filesSelectedElem);
+    }
+    
 })
+
+let preview;
+
+document.getElementById('themePreview').addEventListener('change', event => {
+    preview = event.target.files;
+    renderImages('preview', preview);
+})
+
+function renderError (message = '', whereToRender) {
+    whereToRender.insertAdjacentHTML('beforebegin', `<p class="error-message" style="margin: unset">${message}</p>`);
+    
+    filesSelectedElem.innerHTML = '';
+    
+    setInterval( () => {
+        clearErrors();
+    }, 5000)
+}
 
 function clearErrors ()
 {
@@ -51,32 +103,36 @@ function themePreview(event)
     const themeDesc = document.getElementById('themeDesc').value.trim();
     const themeName = document.getElementById('themeName').value;
 
-    if (themeDesc!=='' && themeName!=='')
+    if (themeDesc!=='' && themeName!=='' && preview !== {})
     {
         const date = new Date();
-        let day = date.getDay().toString().length=== 1 ? `0${date.getDay()}` : date.getDay();
+        let day = date.getDate().toString().length === 1 ? `0${date.getDate()}` : date.getDate();
+        console.log('day: ', day);
         let month = date.getMonth().toString().length === 1 ? `0${date.getMonth()}` : date.getMonth();
+        console.log('month: ', month);
         let hours = date.getHours().toString().length === 1 ? `0${date.getHours()}` : date.getHours();
+        console.log('hours: ', hours);
         let minutes = date.getMinutes().toString().length === 1 ? `0${date.getMinutes()}` : date.getMinutes();
+        console.log('minutes: ', minutes);
 
         let user = document.querySelector('a.login-button').textContent;
-        const images = document.querySelectorAll('img.preview-image');
+        const previewImage = document.getElementById('image-theme-preview');
+
+        console.log(previewImage);
     
         document.getElementById('preview-theme').insertAdjacentHTML('afterend', 
         `
-        <div class="theme" style="width: 100%; margin-top: 20px;">
-    
-            <h3 class="theme-name">
-                ${themeName}
-                <span class="theme-date">${day}.${month}.${date.getFullYear()} в ${hours}:${minutes}</span>
-            </h3>
-    
-            <span class="theme-author">Автор - ${user}</span>
-    
-            <div class="img-wrapper"></div>
-    
+        <div class="theme" style="width: 33%; margin-top: 20px;">
+
+            <div class="theme-preview" style="background-image: url('${previewImage.src}')"></div>
+
+            <h3 class="theme-name">${themeName}</h3>
+
+            <span class="theme-author mainpage-author">Автор - ${user}</span>
+
+            <span class="theme-date mainpage-date">${day}.${month}.${date.getFullYear()} в ${hours}:${minutes}</span>
+
             <p class="theme-text">${themeDesc}</p>
-    
             <span class="theme-comments">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="25px" height="25px">
                     <path d="M0 0h24v24H0z" fill="none"/>
@@ -85,23 +141,11 @@ function themePreview(event)
                 0 ответов в теме
             </span>
         </div>
-        `)
-    
-        images.forEach(item => {
-        
-            let image = new Image();
-            image.src = item.src;
-            image.classList.add('theme-sumbnail');
-            console.log(image);
-            document.querySelector('div.img-wrapper').insertAdjacentElement('beforeend', image);
-        })
+        `);
     }
     else 
     {
-        filesSelectedElem.insertAdjacentHTML('beforebegin', `<p class="error-message" style="margin: unset">Заполните все обязательные поля</p>`);
-        setInterval( () => {
-            clearErrors();
-        }, 5000)
+        renderError('Заполните все обязательные поля', filesSelectedElem)
     }
     
 }

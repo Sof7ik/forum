@@ -1,5 +1,11 @@
 $blueColor: rgb(9, 85, 248);
 $greyColor: rgb(153, 153, 153);
+$bodyColor: #fbfbfb;
+$lightBlue: rgb(41, 197, 230);
+$lightGrey: rgb(243, 243, 243);
+
+$acceptColor: rgb(67, 209, 55);
+$declineColor: rgb(204, 53, 53);
 
 @mixin flex ($ff, $jc, $ai) {
     display: flex;

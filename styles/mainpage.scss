@@ -1,40 +1,69 @@
 @import './mixins.scss';
 
-div.themes-title
-{
-    @include flex(row wrap, space-between, center);
+// div.themes-title
+// {
+//     @include flex(row wrap, space-between, center);
 
-    background-color: rgb(236, 235, 235);
-    padding: 20px 10px;
+//     background-color: rgb(236, 235, 235);
+//     padding: 20px 10px;
+// }
+
+// h2.section-title
+// {
+//     font-weight: normal;
+// }
+
+@media all and (max-width: 1615px)
+{
+    main
+    {
+        @include flex(column nowrap, flex-start, flex-start);
+    }
 }
 
-h2.section-title
-{
-    font-weight: normal;
-}
-
-p.date-title
+div.themes-main
 {
     width: 100%;
-    text-align: left;
-    padding-bottom: 5px;
-
-    border-bottom: 2px solid #000;
-    margin-bottom: 20px;
 }
 
-div.useful-links
+div.themes-date
 {
-    a
-    {
-        margin-right: 40px;
-        color: rgb(9, 49, 228);
-        font-size: 13px;
+    margin-bottom: 30px;
 
-        &:last-child
-        {
-            margin-right: unset;
-        }
+    &:last-child
+    {
+        margin-bottom: unset;
+    }
+
+    p.date-title
+    {
+        width: 100%;
+        text-align: left;
+        padding-bottom: 5px;
+
+        border-bottom: 2px solid #000;
+        margin-bottom: 20px;
+    }
+}
+
+div.themes-date-wrapper
+{
+    @include grid(1fr, repeat(3, 1fr), 20px);
+}
+
+@media all and (max-width: 1200px)
+{
+    div.themes-date-wrapper
+    {
+        @include grid(1fr, repeat(2, 1fr), 20px);
+    }
+}
+
+@media all and (max-width: 830px)
+{
+    div.themes-date-wrapper
+    {
+        @include grid(1fr, 1fr, 20px);
     }
 }
 
@@ -44,55 +73,69 @@ a.theme-url
     color: #000;
 }
 
-div.theme-admin, a.theme-url
+div.theme-admin
 {
     margin-bottom: 10px;
 }
 
 div.theme
 {
-    border: 1px solid rgb(52, 115, 252);
-
-    background-image: linear-gradient(to bottom, 
-                                    rgb(235, 235, 235) 0 50%,
-                                    rgb(187, 187, 187)
-                                    );
     padding: 10px 20px;
 
+    border: 2px solid $lightBlue;
+    background-color: $lightGrey;
+
+    border-radius: 5px;
+
+    min-height: 100%;
+
     @include flex(column nowrap, flex-start, flex-start);
+
+    div.theme-preview
+    {
+        width: 300px;
+        height: 200px;
+        
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+
+        margin: 0 auto 20px auto;
+    }
 
     h3
     {
         margin-bottom: 5px;
+        font-family: 'Tahoma';
     }
 
-    p, span.theme-author
+    span.theme-date.mainpage-date, span.theme-author.mainpage-author
+    {
+        font-size: 15px;
+        font-family: 'Tahoma';
+    }
+
+    p.theme-text, span.mainpage-author
     {
         margin-bottom: 15px;
-    }
-
-    div.img-wrapper
-    {
-        width: 100%;
-
-        @include flex(row wrap, space-evenly, flex-start);
-        margin-bottom: 10px;
     }
 
     p.theme-text
     {
         text-indent: 15px;
+        font-family: 'Tahoma';
+        font-size: 15px;
     }
-
 
     span.theme-comments
     {
-        // align-self: flex-end;
-
         display: inline-flex;
         flex-flow: row nowrap;
         justify-content: flex-start;
         align-items: center;
+
+        font-family: 'Tahoma';
+        font-size: 14px;
 
         svg
         {

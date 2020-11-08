@@ -25,17 +25,14 @@
 
 <div class="container">
 
-    <main class="themes">
+    <main class="themes" style="padding-top: 25px">
+    
+        <?php require './pages/aside.php'; ?>
 
-        <div class="themes-title">
-            <h2 class="section-title">Темы форума</h2>
-            <div class="useful-links">
-                <a href="/pages/rules.php">Правила форума</a>
+        <div class="themes-main">
+            <div class="themes-wrapper">
+                <?php require_once './php/main.php'; ?>   
             </div>
-        </div>
-
-        <div class="themes-wrapper">
-            <?php require_once './php/main.php'; ?>
         </div>
 
     </main>

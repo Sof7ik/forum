@@ -4,8 +4,9 @@ $user = unserialize($_COOKIE['user']);
 $name = $_POST['themeName'];
 $themeDesc = $_POST['themeDesc'];
 $userId = $user['id'];
+$themePreview = $_FILES['themePreview'];
 
-$files = $_FILES['themeThumbnail'];
+$files = $_FILES['themeImages'];
 $newArrFiles = [];
 
 foreach ($files as $key => $file) {
@@ -27,17 +28,17 @@ foreach ($files as $key => $file) {
     }
 }
 
-echo "<pre>";
-    print_r($newArrFiles);
-echo "</pre>";
+// echo "<pre>";
+//     print_r($newArrFiles);
+// echo "</pre>";
 
 function moveFile($fileInfo)
 {
     $fileName = time() . $fileInfo['name'];
     if (move_uploaded_file($fileInfo['tmp_name'], dirname(__DIR__) . '\theme-thumbnail\\' . $fileName))
     {
-        echo "<br>";
-        echo $fileName;
+        // echo "<br>";
+        // echo $fileName;
 
         return $fileName;
     }
@@ -52,16 +53,15 @@ $files = '';
 foreach ($newArrFiles as $key => $file) {
     if (!file_exists(dirname(__DIR__) . '\theme-thumbnail\\'.$file['name']))
     {
-        if (moveFile($file)) {
-            $fileNameToDb = moveFile($file);
+        if ($fileNameToDb = moveFile($file)) {
             
-            echo "<br>";
-            echo 'strlen($files) ' . strlen($files);
-            echo "<br>";
+            // echo "<br>";
+            // echo 'strlen($files) ' . strlen($files);
+            // echo "<br>";
 
-            echo "<br>";
-            echo 'files до ' . $files;
-            echo "<br>";
+            // echo "<br>";
+            // echo 'files до ' . $files;
+            // echo "<br>";
 
             if (strlen($files) !== 0)
             {
@@ -72,8 +72,8 @@ foreach ($newArrFiles as $key => $file) {
                 $files = $fileNameToDb;
             }
 
-            echo "<br>";
-            echo 'files после '.$files;
+            // echo "<br>";
+            // echo 'files после '.$files;
             
         } else
         {
@@ -82,29 +82,32 @@ foreach ($newArrFiles as $key => $file) {
     }
 }
 
-// require_once './connection.php';
+if (!file_exists(dirname(__DIR__) . '\theme-thumbnail\\'.$themePreview['name']))
+{
+    if ($PreviewFileNameToDb = moveFile($themePreview)) {
 
-// $newTheme = $pdo->prepare(
-//     "INSERT INTO 
-//         `themes`
-//             (`id`, `name`, `description`, `image`, `date`, `author`, `status`) 
-//     VALUES 
-//             (NULL, :name, :desc, :filename , NOW(), :userId, 1)");
+        // echo "<br>";
+        // echo $PreviewFileNameToDb;
 
-// $themeInfo = ['name' => $name, 'desc' => $themeDesc, 'filename' => $file['name'],'userId' => $userId];
+        require_once './connection.php';
 
-// if ($newTheme->execute($themeInfo))
-// {
-//     header('Location: ./../pages/my_themes.php');
-// }
+        $newTheme = $pdo->prepare(
+            "INSERT INTO 
+                `themes`
+                    (`id`, `name`, `description`, `image`, `images`, `date`, `author`, `status`) 
+            VALUES 
+                    (NULL, :name, :desc, :image, :images, NOW(), :userId, 1)");
 
-// if (!file_exists(dirname(__DIR__) . '\theme-thumbnail\\'.$file['name']))
-// {
-//     if(move_uploaded_file($file['tmp_name'], dirname(__DIR__) . '\theme-thumbnail\\' . $file['name']))
-//     {
-//         
-//     }
-// }
+        $themeInfo = ['name' => $name, 'desc' => $themeDesc, 'image' => $PreviewFileNameToDb, 'images' => $files, 'userId' => $userId];
 
+        if ($newTheme->execute($themeInfo))
+        {
+            header('Location: ./../pages/my_themes.php');
+
+            // echo "запись в БД есть!";
+        }
+
+    }
+}
 
 ?>

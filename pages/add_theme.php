@@ -37,15 +37,24 @@
                 </div>
 
                 <div class="input-wrapper">
-                    <label for="">Изображения</label>
-                    <label for="themeThumbnail" class="file-label">Обзор</label>
+                    <label for="">Превью статьи<span class="required"> *</span></label>
+                    <label for="themePreview" class="file-label">Обзор</label>
                     <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
-                    <input type="file" multiple name="themeThumbnail[]" id="themeThumbnail" accept="image" required style="display: none;">
+                    <input type="file" name="themePreview" id="themePreview" accept="image" required style="display: none;">
                 </div>
 
-                <p class="selected-files"></p>
+                <div id="theme-preview"></div>
 
-                <div class="image-preview">
+                <div class="input-wrapper">
+                    <label for="">Изображения в статью</label>
+                    <label for="themeImages" class="file-label">Обзор</label>
+                    <input type="hidden" name="MAX_FILE_SIZE" value="30000000" />
+                    <input type="file" multiple name="themeImages[]" id="themeImages" accept="image" style="display: none;">
+                </div>
+
+                <!-- <p class="selected-files"></p> -->
+
+                <div id="images-preview">
 
                 </div>
 

@@ -25,6 +25,21 @@
             </a>
         </h1>
 
+    </div>
+
+</header>
+
+<div class="container nav-container">
+    <nav class="navbar">
+
+        <div class="items-wrapper">
+            <a href="#" class="navbar-item">Главная</a>
+            <a href="#" class="navbar-item">Главная</a>
+            <a href="#" class="navbar-item">Главная</a>
+            <a href="#" class="navbar-item">Главная</a>
+            <a href="/pages/rules.php" class="navbar-item">Правила форума</a>
+        </div>
+
         <div class="login">
             <?
                 if(empty($_COOKIE['user']))
@@ -48,7 +63,7 @@
                         <?=$user['name'].' '.$user['surname']?>
                     </a>
                     <div class="dropdown">
-                        <nav>
+                        <div class="nav">
                             <!-- <a href="./../pages/lk.php" class="dropdown-item">Профиль</a> -->
                             <a href="/pages/my_themes.php" class="dropdown-item">Мои темы</a>
 
@@ -60,14 +75,12 @@
                             ?>
 
                             <a href="/php/logout.php" class="dropdown-item">Выход</a>
-                        </nav>
+                        </div>
                     </div>
                     <?
                 }
             ?>
         </div>
-    </div>
-
-</header>
-
-<!-- echo unserialize($_COOKIE['user']['name'].' '.$_COOKIE['user']['surname']); -->
+       
+    </nav>
+</div>

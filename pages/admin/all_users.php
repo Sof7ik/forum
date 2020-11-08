@@ -40,8 +40,8 @@ if ($user['role'] !== 1)
                 <form action="/php/updateUsers.php" method="post">
                     <div class="toolbar">
                         <p style="margin-bottom: 10px;">С выделенными:</p>
-                        <input type="submit" class="button" value="Заблокировать" name="userDecision">
-                        <input type="submit" class="button" value="Разблокировать" name="userDecision">
+                        <input type="submit" class="button accept" value="Разблокировать" name="userDecision">
+                        <input type="submit" class="button decline" value="Заблокировать" name="userDecision">
                     </div>
 
                     <?require_once './../../php/selectAllUsers.php'?>
