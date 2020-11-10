@@ -99,6 +99,12 @@ function clearErrors ()
 function themePreview(event)
 {
     event.preventDefault();
+
+    if (document.querySelector('div.theme'))
+    {
+        document.querySelector('div.theme').remove();
+    }
+    
     
     const themeDesc = document.getElementById('themeDesc').value.trim();
     const themeName = document.getElementById('themeName').value;

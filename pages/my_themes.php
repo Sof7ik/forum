@@ -43,9 +43,12 @@
                 }
             ?>
 
-            <?php
-            require './../php/my_themes.php';
-            ?>
+            <div class="themes-wrapper">
+                <?php
+                    require './../php/my_themes.php';
+                ?>
+            </div>
+            
 
             <!-- <a href="/pages/theme.php" class="theme-url" id="theme_id-12">
                 <div class="theme-title my-theme-wrapper-2">

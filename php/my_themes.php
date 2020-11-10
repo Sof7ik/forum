@@ -13,6 +13,7 @@ $selectMyThemes = $pdo->prepare(
     "SELECT
         `themes`.`name` AS 'theme-name',
         `themes`.`date`,
+        `themes`.`image` AS 'theme-preview',
         `themes`.`description`,
         `theme-status`.`name` AS 'status-name'
     FROM
@@ -33,10 +34,62 @@ while ($myTheme = $selectMyThemes->fetch()) {
     $date = new DateTime($myTheme['date']);
     $counter =  $counter === 1 ? 2 : 1;
     ?>
-        <div class="theme-title my-theme-wrapper-<?=$counter?>">
-            <h3><?=$myTheme['theme-name']?> <span>от</span> <span class="theme-date"><?=$date->format('d-m-Y h:i:s')?></span> </h3>
+
+    <div class="theme">
+
+        <?
+            $url = $myTheme['theme-preview'] === '' ? 'https://via.placeholder.com/300x200.png' : '/theme-thumbnail//'.$myTheme['theme-preview'];
+
+            $url = file_exists('/theme-thumbnail//'.$myTheme['theme-preview']) ? '/theme-thumbnail//'.$theme['theme-preview'] : 'https://via.placeholder.com/300x200.png' ;
+        ?>
+        <div class="theme-preview" style="background-image: url('<?=$url?>')"></div>
+
+            <h3 class="theme-name"><?=$myTheme['theme-name']?></h3>
+
+            <span class="theme-date mainpage-date"><?=$date->format('d.m.Y в H:i')?></span>
+
             <span class="theme-status"><?=$myTheme['status-name']?></span>
-            <p class="theme-desc"><?=$myTheme['description']?></p>
+
+            <p class="theme-text"><?=$myTheme['desctiption']?></p>
+
+            <span class="theme-comments">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="25px" height="25px">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18z"/>
+                </svg>
+                <?
+                $countComments = $pdo->prepare("SELECT COUNT(`comments`.`id`)
+                FROM
+                    ".dbname.".`comments`,
+                    ".dbname.".`users`,
+                    ".dbname.".`themes`
+                WHERE
+                    `comments`.`id_theme` = `themes`.`id` AND 
+                    `comments`.`id_theme` = :themeID AND
+                    `comments`.`author` = `users`.`id`");
+
+                $countComments -> execute(array('themeID' => $theme['theme-id']));
+
+                while ($comments = $countComments->fetch(PDO::FETCH_LAZY))
+                {
+                    if ($comments[0] % 2 == 0)
+                    {
+                        echo $comments[0].' ответа в теме';
+                    }
+
+                    elseif (($comments[0] % $comments[0] == 0) && ($comments[0] !== 0))
+                    {
+                        echo $comments[0].' ответ в теме';
+                    }
+
+                    else if ($comments[0] === 0)
+                    {
+                        echo $comments[0].' ответов в теме';
+                    }
+                    
+                }?>
+            </span>
+
         </div>
     <?php
     $index++;

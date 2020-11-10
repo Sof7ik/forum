@@ -831,23 +831,14 @@ a.new-theme {
 
 main.my-theme {
   padding: 20px 0 50px 0;
+  display: block;
 }
 
-div.my-theme-wrapper-1 {
-  padding: 0 0 15px 15px;
-  border-bottom: 2px solid #ccc;
-  border-left: 2px solid #ccc;
-}
-
-div.my-theme-wrapper-2 {
-  padding: 0 0 15px 15px;
-  border-bottom: 2px solid #ccc;
-  border-right: 2px solid #ccc;
-}
-
-div.theme-title.my-theme-wrapper-1 h3,
-div.theme-title.my-theme-wrapper-2 h3 {
-  margin-bottom: unset;
+div.themes-wrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
 }
 
 span.theme-status {
@@ -951,23 +942,14 @@ a.new-theme {
 
 main.my-theme {
   padding: 20px 0 50px 0;
+  display: block;
 }
 
-div.my-theme-wrapper-1 {
-  padding: 0 0 15px 15px;
-  border-bottom: 2px solid #ccc;
-  border-left: 2px solid #ccc;
-}
-
-div.my-theme-wrapper-2 {
-  padding: 0 0 15px 15px;
-  border-bottom: 2px solid #ccc;
-  border-right: 2px solid #ccc;
-}
-
-div.theme-title.my-theme-wrapper-1 h3,
-div.theme-title.my-theme-wrapper-2 h3 {
-  margin-bottom: unset;
+div.themes-wrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
 }
 
 span.theme-status {
