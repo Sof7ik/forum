@@ -32,15 +32,53 @@ $counter = 1;
 $index = 1;
 while ($myTheme = $selectMyThemes->fetch()) {
     $date = new DateTime($myTheme['date']);
-    $counter =  $counter === 1 ? 2 : 1;
+    // $counter =  $counter === 1 ? 2 : 1;
     ?>
 
     <div class="theme">
 
         <?
-            $url = $myTheme['theme-preview'] === '' ? 'https://via.placeholder.com/300x200.png' : '/theme-thumbnail//'.$myTheme['theme-preview'];
+        if ($myTheme['theme-preview'] !== '')
+        {
+            $imageIsNull = 0;
+        }
+        else 
+        {
+            $imageIsNull = 1;
+        }
 
-            $url = file_exists('/theme-thumbnail//'.$myTheme['theme-preview']) ? '/theme-thumbnail//'.$theme['theme-preview'] : 'https://via.placeholder.com/300x200.png' ;
+        if (file_exists(dirname(__DIR__).'/theme-thumbnail//'.$myTheme['theme-preview']))
+        {
+            $isFileExists = 1;
+        }
+        else
+        {
+            $isFileExists = 0;
+        }
+
+        if(!$imageIsNull && $isFileExists)
+        {
+            $url = '/theme-thumbnail//'.trim($myTheme['theme-preview']);
+        }
+        else 
+        {
+            $url = 'https://via.placeholder.com/300x200.png';
+        }
+            
+            // $url =  ? 'https://via.placeholder.com/300x200.png' : '/theme-thumbnail//'.trim($myTheme['theme-preview']);
+
+        // if (file_exists('/theme-thumbnail//'.trim($myTheme['theme-preview'])))
+        // {
+        //     echo "Файл есть";
+        //     echo '/theme-thumbnail//'.trim($myTheme['theme-preview']);
+        // }
+        // else 
+        // {
+        //     echo "Файл нету";
+        //     echo '/theme-thumbnail//'.trim($myTheme['theme-preview']);
+        // }
+
+            // $url = file_exists('/theme-thumbnail//'.trim($myTheme['theme-preview'])) ? '/theme-thumbnail//'.trim($theme['theme-preview']) : 'https://via.placeholder.com/300x200.png' ;
         ?>
         <div class="theme-preview" style="background-image: url('<?=$url?>')"></div>
 

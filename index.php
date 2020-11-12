@@ -30,7 +30,7 @@
         <?php require './pages/aside.php'; ?>
 
         <div class="themes-main">
-            <div class="themes-wrapper">
+            <div class="themes-wrapper mainpage">
                 <?php require_once './php/main.php'; ?>   
             </div>
         </div>

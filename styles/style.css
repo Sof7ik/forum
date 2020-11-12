@@ -53,7 +53,7 @@ main {
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-top: 50px;
+  padding: 50px 0;
 }
 
 div.container {
@@ -62,6 +62,21 @@ div.container {
   margin: 0 auto;
 }
 
+div.themes-wrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+@media all and (max-width: 1200px) {
+  div.themes-wrapper {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+}
 a.add-new {
   padding: 10px;
   border: 1px solid #c9c9c9;
@@ -481,6 +496,10 @@ div.themes-main {
   width: 100%;
 }
 
+div.themes-wrapper.mainpage {
+  display: block;
+}
+
 div.themes-date {
   margin-bottom: 30px;
 }
@@ -521,6 +540,9 @@ div.themes-date-wrapper {
 a.theme-url {
   display: block;
   color: #000;
+}
+a.theme-url:focus {
+  outline: none;
 }
 
 div.theme-admin {
@@ -757,6 +779,7 @@ div.images {
 div.images div.theme-image {
   width: 300px;
   height: 300px;
+  justify-self: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -797,56 +820,6 @@ form.comment-form textarea {
   font-size: 18px;
   text-indent: 15px;
   resize: vertical;
-}
-
-.button, label.file-label {
-  padding: 10px;
-  color: #fff;
-  font-size: 16px;
-  background-color: #0955f8;
-  border-radius: 10px;
-  border: 1px solid #0955f8;
-  transition: all 0.3s;
-}
-.button:hover, label.file-label:hover {
-  color: #0955f8;
-  background-color: #fff;
-  cursor: pointer;
-  padding: 10px 20px;
-}
-.inactive.button, label.inactive.file-label {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-.inactive.button:hover, label.inactive.file-label:hover {
-  color: #fff;
-  background-color: #0955f8;
-  padding: 10px;
-}
-
-a.new-theme {
-  display: inline-block;
-  margin-bottom: 20px;
-}
-
-main.my-theme {
-  padding: 20px 0 50px 0;
-  display: block;
-}
-
-div.themes-wrapper {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-}
-
-span.theme-status {
-  margin: 4px 0;
-  display: inline-block;
-  margin-left: 20px;
-  font-size: 13px;
-  color: #999999;
 }
 
 .button, label.file-label {
@@ -945,18 +918,11 @@ main.my-theme {
   display: block;
 }
 
-div.themes-wrapper {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-}
-
 span.theme-status {
   margin: 4px 0;
   display: inline-block;
   margin-left: 20px;
-  font-size: 13px;
+  font-size: 16px;
   color: #999999;
 }
 
@@ -989,6 +955,13 @@ div.toolbar {
   margin-bottom: 20px;
 }
 
+div.themes-wrapper.admin {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
 div.admin-nav {
   background-color: #2e2e2e;
   padding: 10px;
@@ -1006,9 +979,14 @@ div.theme-admin {
   justify-content: flex-start;
   align-items: center;
 }
-div.theme-admin div.theme-info {
-  padding-left: 10px;
-  border-left: 1px solid #000;
+div.theme-admin.accepted {
+  border: 2px solid #43d137;
+}
+div.theme-admin.declined {
+  border: 2px solid #cc3535;
+}
+div.theme-admin.moderation {
+  border: 2px solid #999999;
 }
 div.theme-admin div.theme-select {
   padding-right: 10px;
@@ -1016,4 +994,58 @@ div.theme-admin div.theme-select {
 div.theme-admin div.theme-select input {
   width: 20px;
   height: 20px;
+}
+
+div.theme-info.admin {
+  background-color: unset;
+  padding: unset;
+  margin-bottom: unset;
+  margin: 0 auto;
+}
+
+div.user-wrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+div.user-admin {
+  padding: 0 5px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+div.user-admin.accepted {
+  border: 2px solid #43d137;
+}
+div.user-admin.declined {
+  border: 2px solid #cc3535;
+}
+div.user-admin div.user-info {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+div.user-admin div.user-info * {
+  padding: 10px 10px;
+  display: inline-block;
+  border-right: 1px solid #000;
+  min-width: 150px;
+}
+div.user-admin div.user-info p {
+  border-right: unset;
+}
+div.user-admin div.user-select {
+  border-right: 1px solid #000;
+  display: inline-block;
+  padding: 10px 10px;
+}
+div.user-admin div.user-select input {
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin: auto 0;
 }

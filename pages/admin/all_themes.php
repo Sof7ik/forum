@@ -35,8 +35,6 @@ if ($user['role'] !== 1)
     <main class="themes">
         <div class="container">
 
-            <div class="themes-wrapper" style="padding-top: 50px;">
-
                 <form action="./../../php/updateThemes.php" method="post">
                     <div class="toolbar">
                         <p style="margin-bottom: 10px;">С выделенными:</p>
@@ -44,13 +42,14 @@ if ($user['role'] !== 1)
                         <input type="submit" class="button decline" value="Отклонить" name="themeDecision">
                     </div>
 
-                    <?php
-                    require_once './../../php/selectAllThemes.php';
-                    ?>
+                    <div class="themes-wrapper admin">
+                        <?php
+                        require_once './../../php/selectAllThemes.php';
+                        ?>
+                    </div>
+                    
 
                 </form>
-
-            </div>
 
         </div>
     </main>

@@ -32,7 +32,7 @@ ul {
 main
 {
     @include flex(row nowrap, flex-start, flex-start);
-    padding-top: 50px;
+    padding: 50px 0;
 }
 
 div.container
@@ -40,6 +40,19 @@ div.container
     width: 90%;
     max-width: 1440px;
     margin: 0 auto;
+}
+
+div.themes-wrapper
+{
+    @include grid(1fr, repeat(4, 1fr), 20px);
+}
+
+@media all and (max-width: 1200px)
+{
+    div.themes-wrapper
+    {
+        @include grid(1fr, repeat(3, 1fr), 20px);
+    }
 }
 
 a.add-new

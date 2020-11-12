@@ -22,20 +22,28 @@ $selectTheme=$pdo->query(
     ORDER BY `themes`.`date` DESC");
 
     $tmp_date = "01.01.2000";
+    $index = 0;
     while($theme = $selectTheme->fetch())
     {
         $date = new DateTime($theme['theme-date']);
         $date1 = $date->format('d.m.Y');
 
-        if($tmp_date != $date1)
+        if($tmp_date !== $date1)
         {
+            // echo $tmp_date;
+            // echo "<br>";
+            // echo $date1;
+
             $tmp_date = $date1;
-            ?>
+            if ($index >= 1)
+            {?>
+                    </div>
+                </div>
+            <?}?>
                 <div class="themes-date">
                     <p class='date-title'><?=$tmp_date?></p>
                     <div class="themes-date-wrapper">
-            <?
-        }?>
+        <?}?>
 
                         <a href="/pages/theme.php?id=<?=$theme['theme-id']?>" class="theme-url" id="theme_id-<?=$theme['theme-id']?>">
                             <div class="theme">
@@ -88,7 +96,7 @@ $selectTheme=$pdo->query(
                                     }?>
                                 </span>
                             </div>
-                        </a>
-                    </div>
-                </div>        
-    <?}?>
+                        </a>       
+    <?
+        $index++;
+    }?>

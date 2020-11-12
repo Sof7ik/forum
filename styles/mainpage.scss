@@ -26,6 +26,11 @@ div.themes-main
     width: 100%;
 }
 
+div.themes-wrapper.mainpage
+{
+    display: block;
+}
+
 div.themes-date
 {
     margin-bottom: 30px;
@@ -71,6 +76,11 @@ a.theme-url
 {
     display: block;
     color: #000;
+
+    &:focus
+    {
+        outline: none;    
+    }
 }
 
 div.theme-admin

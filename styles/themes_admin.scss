@@ -5,6 +5,11 @@ div.toolbar
     margin-bottom: 20px;
 }
 
+div.themes-wrapper.admin
+{
+    @include grid(1fr, repeat(3, 1fr), 20px);
+}
+
 div.admin-nav
 {
     background-color: rgb(46, 46, 46);
@@ -21,10 +26,19 @@ div.theme-admin
 {
     @include flex(row nowrap, flex-start, center);
 
-    div.theme-info
+    &.accepted
     {
-        padding-left: 10px;
-       border-left: 1px solid #000;
+        border: 2px solid $acceptColor;
+    }
+
+    &.declined
+    {
+        border: 2px solid $declineColor;
+    }
+
+    &.moderation
+    {
+        border: 2px solid $greyColor;
     }
 
     div.theme-select
@@ -35,6 +49,71 @@ div.theme-admin
         {
             width: 20px;
             height: 20px;
+        }
+    }
+}
+
+div.theme-info.admin
+{
+    background-color: unset;
+    padding: unset;
+    margin-bottom: unset;
+
+    margin: 0 auto;
+}
+
+div.user-wrapper
+{
+    @include grid(1fr, repeat(4, 1fr), 20px);
+}
+
+div.user-admin
+{
+    padding: 0 5px;
+
+    @include flex(row nowrap, flex-start, center);
+
+    &.accepted
+    {
+        border: 2px solid $acceptColor;
+    }
+
+    &.declined
+    {
+        border: 2px solid $declineColor;
+    }
+
+    div.user-info
+    {
+        @include flex(row nowrap, flex-start, center);
+
+        *
+        {
+            padding: 10px 10px;
+            display: inline-block;
+            border-right: 1px solid #000;
+
+            min-width: 150px;
+        }
+
+        p
+        {
+            border-right: unset;
+        }
+    }
+
+    div.user-select
+    {
+        border-right: 1px solid #000;
+        display: inline-block;
+        padding: 10px 10px;
+
+        input
+        {
+            width: 20px;
+            height: 20px;
+            display: block;
+            margin: auto 0;
         }
     }
 }

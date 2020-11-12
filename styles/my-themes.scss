@@ -13,18 +13,13 @@ main.my-theme
     display: block;
 }
 
-div.themes-wrapper
-{
-    @include grid(1fr, repeat(4, 1fr), 20px);
-}
-
 span.theme-status
 {
     margin: 4px 0;
     display: inline-block;
     margin-left: 20px;
 
-    font-size: 13px;
+    font-size: 16px;
     color: $greyColor;
 }
 

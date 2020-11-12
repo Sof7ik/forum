@@ -35,19 +35,18 @@ if ($user['role'] !== 1)
     <main class="themes">
         <div class="container">
 
-            <div class="themes-wrapper" style="padding-top: 50px;">
-
-                <form action="/php/updateUsers.php" method="post">
+                <form action="/php/updateUsers.php" method="post" style="width: 100%;">
                     <div class="toolbar">
                         <p style="margin-bottom: 10px;">С выделенными:</p>
                         <input type="submit" class="button accept" value="Разблокировать" name="userDecision">
                         <input type="submit" class="button decline" value="Заблокировать" name="userDecision">
                     </div>
 
-                    <?require_once './../../php/selectAllUsers.php'?>
+                    <div class="user-wrapper">
+                        <?require_once './../../php/selectAllUsers.php'?>
+                    </div>
+                    
                 </form>
-
-            </div>
 
         </div>
 

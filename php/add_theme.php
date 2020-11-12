@@ -35,16 +35,20 @@ foreach ($files as $key => $file) {
 function moveFile($fileInfo)
 {
     $fileName = time() . $fileInfo['name'];
-    if (move_uploaded_file($fileInfo['tmp_name'], dirname(__DIR__) . '\theme-thumbnail\\' . $fileName))
+    // $fileName = $fileInfo['name'];
+    if (!file_exists(dirname(__DIR__) . '\theme-thumbnail\\' . $fileName))
     {
-        // echo "<br>";
-        // echo $fileName;
-
-        return $fileName;
-    }
-    else 
-    {
-        return false;
+        if (move_uploaded_file($fileInfo['tmp_name'], dirname(__DIR__) . '\theme-thumbnail\\' . $fileName))
+        {
+            // echo "<br>";
+            // echo $fileName;
+    
+            return $fileName;
+        }
+        else 
+        {
+            return false;
+        }
     }
 }
 

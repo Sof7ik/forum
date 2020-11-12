@@ -28,7 +28,7 @@ while($theme = $selectThemeInfo->fetch(PDO::FETCH_LAZY))
 {
     $date = new DateTime($theme['date']);
     ?>
-        <a href="/index.php?#theme-id-<?=$theme['id']?>" class="back-button">На главную</a>
+        <a href="/index.php?#theme_id-<?=$theme['id']?>" class="back-button">На главную</a>
 
         <div class="theme-title" style="margin-top: 20px;">
             <h3><?=$theme['themename']?></h3>
@@ -73,6 +73,7 @@ while($theme = $selectThemeInfo->fetch(PDO::FETCH_LAZY))
             $images = explode(',', $theme['theme-images']);
 
             foreach ($images as $key => $image) {
+                $image = trim($image);
                 ?>
                     <div class="theme-image" style="background-image: url('/theme-thumbnail/<?=$image?>')"></div>
                 <?
