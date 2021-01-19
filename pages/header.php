@@ -33,13 +33,22 @@
     <nav class="navbar">
 
         <div class="items-wrapper">
+            <a href="/index.php" class="navbar-item">Главная</a>
+            <!-- <a href="#" class="navbar-item">Главная</a>
             <a href="#" class="navbar-item">Главная</a>
-            <a href="#" class="navbar-item">Главная</a>
-            <a href="#" class="navbar-item">Главная</a>
-            <a href="#" class="navbar-item">Главная</a>
+            <a href="#" class="navbar-item">Главная</a> -->
             <a href="/pages/rules.php" class="navbar-item">Правила форума</a>
         </div>
 
+        <form action="/php/searchThemes.php" method="POST" class='searchForm'>
+            <div class="search">
+                <input type="text" name="searchQuery" id="searchQuery" class="input" placeholder="Название статьи...">
+
+                <label for="searchPosts" class="searchLabel"></label>
+                <input type="submit" id="searchPosts" style="display: none">
+            </div>
+        </form>
+        
         <div class="login">
             <?
                 if(empty($_COOKIE['user']))

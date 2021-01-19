@@ -61,5 +61,7 @@
         </main>
     </div>
 
+    <?include dirname(__DIR__) . '/pages/footer.php'?>
+
 </body>
 </html>

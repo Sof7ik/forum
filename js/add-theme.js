@@ -38,46 +38,6 @@ function renderImages(whatToRender = '', inputFiles)
     }
 }
 
-document.getElementById('themeImages').addEventListener('change', event => {
-    const files = event.target.files;
-
-    console.log(document.getElementById('images-preview').childNodes.length - 1);
-    console.log(files.length);
-    console.log('Длина', document.getElementById('images-preview').childNodes.length - 1 + files.length);
-
-    if (document.getElementById('images-preview').childNodes.lengt !== 0)
-    {
-        if(document.getElementById('images-preview').childNodes.length - 1 + files.length < 5)
-        {
-            if (files.length < 5)
-            {
-                clearErrors();
-                renderImages('images', files);
-
-            } else
-            {
-                renderError('Вы можете выбрать не более 4 файлов 1', filesSelectedElem);
-            }
-        }
-        else
-        {
-            renderError('Вы можете выбрать не более 4 файлов 2', filesSelectedElem);
-        }
-    }
-    else
-    {
-        renderError('Вы можете выбрать не более 4 файлов 3', filesSelectedElem);
-    }
-    
-})
-
-let preview;
-
-document.getElementById('themePreview').addEventListener('change', event => {
-    preview = event.target.files;
-    renderImages('preview', preview);
-})
-
 function renderError (message = '', whereToRender) {
     whereToRender.insertAdjacentHTML('beforebegin', `<p class="error-message" style="margin: unset">${message}</p>`);
     
@@ -96,6 +56,43 @@ function clearErrors ()
     }
 }
 
+
+document.getElementById('themeImages').addEventListener('change', event => {
+    const files = event.target.files;
+
+    if (document.getElementById('images-preview').childNodes.lengt !== 0)
+    {
+        if(document.getElementById('images-preview').childNodes.length - 1 + files.length < 5)
+        {
+            if (files.length < 5)
+            {
+                clearErrors();
+                renderImages('images', files);
+
+            } else
+            {
+                renderError('Вы можете выбрать не более 4 файлов', filesSelectedElem);
+            }
+        }
+        else
+        {
+            renderError('Вы можете выбрать не более 4 файлов', filesSelectedElem);
+        }
+    }
+    else
+    {
+        renderError('Вы можете выбрать не более 4 файлов', filesSelectedElem);
+    }
+    
+})
+
+let preview;
+
+document.getElementById('themePreview').addEventListener('change', event => {
+    preview = event.target.files;
+    renderImages('preview', preview);
+})
+
 function themePreview(event)
 {
     event.preventDefault();
@@ -104,7 +101,6 @@ function themePreview(event)
     {
         document.querySelector('div.theme').remove();
     }
-    
     
     const themeDesc = document.getElementById('themeDesc').value.trim();
     const themeName = document.getElementById('themeName').value;

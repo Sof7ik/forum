@@ -1,10 +1,34 @@
+<?
+require_once dirname(__DIR__) . '/php/connection.php';
+
+$select5Themes=$pdo->query(
+    "SELECT
+        `themes`.`id` AS 'theme-id',
+        `themes`.`name` AS 'theme-name'
+    FROM
+        ".dbname.".`themes`,
+        ".dbname.".`theme-status`
+    WHERE
+        `themes`.`status` = `theme-status`.`id` AND
+        `themes`.`status` = 2
+    ORDER BY `themes`.`watches` DESC LIMIT 5");
+?>
+
 <div class="left">
+    <p>Самые читаемые темы на форуме</p>
+
     <aside>
         <ul>
-            <li><a class="aside-item" href="#">Категория 1</a></li>
-            <li><a class="aside-item" href="#">Категория 1</a></li>
-            <li><a class="aside-item" href="#">Категория 1</a></li>
-            <li><a class="aside-item" href="#">Категория 1</a></li>
+            <?
+                while ($theme = $select5Themes->fetch())
+                {
+                    ?>
+                    <li>
+                        <a class="aside-item" href='/pages/theme.php?id=<?=$theme["theme-id"]?>' > <?=$theme['theme-name']?></a>
+                    </li> 
+                    <?
+                }
+            ?>
         </ul>
     </aside>
 

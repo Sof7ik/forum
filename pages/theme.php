@@ -66,6 +66,16 @@
                             //разблокирован
                             ?><input type="submit" value="Отправить комментарий" class="button submit-button"><?
                         }
+
+                        $errors = unserialize($_COOKIE['errors']);
+                        if (!empty($errors['commentErrors']))
+                        {
+                            foreach ($errors['commentErrors'] as $key => $error) {
+                                ?>
+                                <p class="error-message"><?=$error['message']?></p>
+                                <?
+                            }
+                        }
                     ?>
                     
                 </form>
@@ -75,6 +85,8 @@
         </main>
 
     </div>
+
+    <?include dirname(__DIR__) . '/pages/footer.php'?>
 
 </body>
 </html>

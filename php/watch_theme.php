@@ -10,8 +10,10 @@ $selectThemeInfo = $pdo->prepare(
         `themes`.`name` AS 'themename',
         `themes`.`description`,
         `themes`.`date`,
+        `themes`.`text` AS 'theme-text',
         `themes`.`images` AS 'theme-images',
         `themes`.`image` AS `theme-preview`,
+        `themes`.`watches`,
         `users`.`name` AS 'authorname',
         `users`.`surname`
     FROM
@@ -22,10 +24,15 @@ $selectThemeInfo = $pdo->prepare(
         `themes`.`id` = :themeId
     ");
 
+$updateWatches = $pdo->prepare("UPDATE `themes` SET `watches`= :watches WHERE `id` = :themeId");
+
 $selectThemeInfo->execute(array('themeId' => $themeId));
 
 while($theme = $selectThemeInfo->fetch(PDO::FETCH_LAZY))
 {
+
+    $updateWatches->execute( array('watches'=>$theme['watches']+1, 'themeId' => $themeId) );
+
     $date = new DateTime($theme['date']);
     ?>
         <a href="/index.php?#theme_id-<?=$theme['id']?>" class="back-button">На главную</a>
@@ -45,26 +52,7 @@ while($theme = $selectThemeInfo->fetch(PDO::FETCH_LAZY))
         </div>
 
         <article>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi animi facere tempora, laudantium repellat ratione nihil odit maxime incidunt? Expedita natus incidunt culpa soluta voluptate doloremque voluptas, maiores quisquam voluptates?
-            Maiores quis facilis expedita temporibus ut nostrum rerum officiis ab laudantium quidem dignissimos nobis harum blanditiis minus distinctio tempore, dolorem perferendis quas cum. Adipisci cum quisquam reprehenderit? Atque, et perferendis?
-            Quas doloremque aspernatur incidunt optio expedita quae, sunt fugiat odio laborum nesciunt. Reiciendis, veniam consequuntur fuga aliquam quasi quaerat ullam, sunt blanditiis voluptatem adipisci, ipsum similique natus velit nemo quidem.
-            Alias, nisi! Quasi et rem aspernatur sit harum ducimus! Perferendis minima at architecto totam dolore necessitatibus nostrum ad. Molestias delectus quia earum voluptatem, doloremque beatae soluta ad recusandae eos magnam!
-            Voluptatem repellat cum nesciunt iste quae quaerat alias quia temporibus iusto dignissimos optio rerum eaque, aut vero atque recusandae veniam ab fugit perferendis labore odio id maiores dolorum? Quia, error.
-            Hic fugiat odio pariatur placeat necessitatibus quisquam et ducimus non iste quae voluptatum magnam perferendis, reiciendis nemo repellendus tempora corporis! Eligendi, tenetur! Odit, suscipit. Inventore, vitae. Eum laborum voluptate illo.
-            Nam doloribus nemo impedit dicta dignissimos accusantium. Amet unde quod facilis maiores odio neque, nam aperiam incidunt perferendis velit eligendi eius harum quas iure eaque doloremque, vel cupiditate. Quia, voluptatum?
-            Vitae voluptatem dolor optio odio et earum placeat quaerat vero quas quidem impedit quae deserunt debitis suscipit ut delectus, sequi consequatur, obcaecati consequuntur dolore sunt perferendis nemo sit. Quasi, saepe?
-            Cumque laudantium totam a voluptatum nobis. Vitae ipsum, necessitatibus cupiditate quasi voluptas rem id ad eligendi deserunt dicta aut error, ipsam non repellat dignissimos. Magni sint delectus officiis numquam consequatur.
-            Itaque nobis minima consectetur harum asperiores expedita illum culpa, ad eius sint quis quod voluptatem praesentium</p>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi animi facere tempora, laudantium repellat ratione nihil odit maxime incidunt? Expedita natus incidunt culpa soluta voluptate doloremque voluptas, maiores quisquam voluptates?
-            Maiores quis facilis expedita temporibus ut nostrum rerum officiis ab laudantium quidem dignissimos nobis harum blanditiis minus distinctio tempore, dolorem perferendis quas cum. Adipisci cum quisquam reprehenderit? Atque, et perferendis?
-            Quas doloremque aspernatur incidunt optio expedita quae, sunt fugiat odio laborum nesciunt. Reiciendis, veniam consequuntur fuga aliquam quasi quaerat ullam, sunt blanditiis voluptatem adipisci, ipsum similique natus velit nemo quidem.
-            Alias, nisi! Quasi et rem aspernatur sit harum ducimus! Perferendis minima at architecto totam dolore necessitatibus nostrum ad. Molestias delectus quia earum voluptatem, doloremque beatae soluta ad recusandae eos magnam!
-            Voluptatem repellat cum nesciunt iste quae quaerat alias quia temporibus iusto dignissimos optio rerum eaque, aut vero atque recusandae veniam ab fugit perferendis labore odio id maiores dolorum? Quia, error.
-            Hic fugiat odio pariatur placeat necessitatibus quisquam et ducimus non iste quae voluptatum magnam perferendis, reiciendis nemo repellendus tempora corporis! Eligendi, tenetur! Odit, suscipit. Inventore, vitae. Eum laborum voluptate illo.
-            Nam doloribus nemo impedit dicta dignissimos accusantium. Amet unde quod facilis maiores odio neque, nam aperiam incidunt perferendis velit eligendi eius harum quas iure eaque doloremque, vel cupiditate. Quia, voluptatum?
-            Vitae voluptatem dolor optio odio et earum placeat quaerat vero quas quidem impedit quae deserunt debitis suscipit ut delectus, sequi consequatur, obcaecati consequuntur dolore sunt perferendis nemo sit. Quasi, saepe?
-            Cumque laudantium totam a voluptatum nobis. Vitae ipsum, necessitatibus cupiditate quasi voluptas rem id ad eligendi deserunt</p>
+            <p><?=$theme['theme-text']?></p>
         </article>
 
         <div class="images">
@@ -85,53 +73,39 @@ while($theme = $selectThemeInfo->fetch(PDO::FETCH_LAZY))
     <?php
 }
 
-$countComments = $pdo->prepare(
-    "SELECT COUNT(`comments`.`id`)
-    FROM
-        ".dbname.".`comments`,
-        ".dbname.".`themes`
-    WHERE
-        `comments`.`id_theme` = `themes`.`id` AND
-        `comments`.`id_theme` = :themeId
+    $selectThemeComments = $pdo->prepare(
+        "SELECT
+            `users`.`name`,
+            `users`.`surname`,
+            `comments`.`date`,
+            `comments`.`text`
+        FROM
+            ".dbname.".`users`,
+            ".dbname.".`comments`,
+            ".dbname.".`themes`
+        WHERE
+            `comments`.`author` = `users`.`id` AND
+            `comments`.`id_theme` = `themes`.`id` AND
+            `comments`.`id_theme` = :themeId
+        ORDER BY `comments`.`date`
     ");
 
-    $countComments->execute(array('themeId' => $themeId));
-    $countComments = $countComments->fetch();
-    if($countComments[0] !== 0)
-    {
-        $selectThemeComments = $pdo->prepare(
-            "SELECT
-                `users`.`name`,
-                `users`.`surname`,
-                `comments`.`date`,
-                `comments`.`text`
-            FROM
-                ".dbname.".`users`,
-                ".dbname.".`comments`,
-                ".dbname.".`themes`
-            WHERE
-                `comments`.`author` = `users`.`id` AND
-                `comments`.`id_theme` = `themes`.`id` AND
-                `comments`.`id_theme` = :themeId
-            ORDER BY `comments`.`date`
-        ");
-        $selectThemeComments->execute(array('themeId' => $themeId));
-    }
+    $selectThemeComments->execute(array('themeId' => $themeId));
+
     ?>
-        <section class="theme-comments">
-
+        <section class="theme-comments" id="comments">
             <div class="theme-title"><h2>Комментарии</h2></div>
-
             <?
+                $index = 0;
+                $comments = $selectThemeComments->fetchAll();
 
-                if($countComments[0] === 0)
+                if (count($comments) === 0)
                 {
                     echo "В этой теме ещё нет ни одного ответа. Будьте первым, кто его напишет!)";
                 }
-
-                if ($countComments[0] !== 0)
+                else 
                 {
-                    while($comment = $selectThemeComments->fetch(PDO::FETCH_LAZY))
+                    foreach($comments as $comment)
                     {
                         $date = new DateTime($comment['date']);
                         ?>
@@ -143,7 +117,6 @@ $countComments = $pdo->prepare(
                     }
                 }
             ?>
-
         </section>
     <?
 ?>

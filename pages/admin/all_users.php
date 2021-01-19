@@ -52,5 +52,7 @@ if ($user['role'] !== 1)
 
     </main>
 
+    <?include dirname(__DIR__) . '/footer.php'?>
+
 </body>
 </html>

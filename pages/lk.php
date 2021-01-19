@@ -21,6 +21,48 @@
 </head>
 <body>
     <?php require './header.php'; ?>
-    Линый кабинет
+    
+    <main class="lk">
+
+        <div class="container">
+
+            <?
+            $errors = unserialize($_COOKIE['errors']);
+            if (!empty($errors['updateErrors']))
+            {
+                foreach ($errors['updateErrors'] as $key => $error) {
+                    ?>
+                    <p class="error-message"><?=$error['message']?></p>
+                    <?php
+                }
+            }
+            ?>
+
+            <div class="change-data">
+                <p>Изменить учетные данные</p>
+
+                <form action="/php/change_user_data.php" method="POST">
+                    <div class="input-wrapper">
+                        <label for="userEmailToChange">Email</label>
+                        <input type="email" name="userEmail" id="userEmailToChange" maxlength="255">
+                    </div>
+                    <input type="submit" value="Изменить email" class="button" name="whatToChange">
+
+                    <div class="input-wrapper" style="margin-top: 20px">
+                        <label for="userPasswordToChange">Пароль</label>
+                        <input type="password" name="userPass" id="userPasswordToChange" maxlength="255">
+                    </div>
+                    <input type="submit" value="Изменить пароль" class="button" name="whatToChange">
+                </form>
+                
+            </div>
+            
+            
+
+        </div>
+
+    </main>
+
+    <?include dirname(__DIR__) . '/pages/footer.php'?>
 </body>
 </html>

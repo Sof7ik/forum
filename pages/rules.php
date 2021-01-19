@@ -76,5 +76,7 @@
             <p>Все пользователи и модераторы обязаны соблюдать <a style="color: rgb(9, 49, 228);" href="https://yandex.ru/legal/autoru_terms_of_service/" target="_blank">Пользовательское Соглашение</a></p>
         </main>
     </div>
+
+    <?include dirname(__DIR__) . '/pages/footer.php'?>
 </body>
 </html>

@@ -30,10 +30,6 @@ $selectTheme=$pdo->query(
 
         if($tmp_date !== $date1)
         {
-            // echo $tmp_date;
-            // echo "<br>";
-            // echo $date1;
-
             $tmp_date = $date1;
             if ($index >= 1)
             {?>
@@ -78,22 +74,9 @@ $selectTheme=$pdo->query(
 
                                     while ($comments = $countComments->fetch(PDO::FETCH_LAZY))
                                     {
-                                        if ($comments[0] % 2 == 0)
-                                        {
-                                            echo $comments[0].' ответа в теме';
-                                        }
-
-                                        elseif (($comments[0] % $comments[0] == 0) && ($comments[0] !== 0))
-                                        {
-                                            echo $comments[0].' ответ в теме';
-                                        }
-
-                                        else if ($comments[0] === 0)
-                                        {
-                                            echo $comments[0].' ответов в теме';
-                                        }
-                                        
-                                    }?>
+                                        echo "Комментариев в теме: ".$comments[0];
+                                    }
+                                    ?>
                                 </span>
                             </div>
                         </a>       

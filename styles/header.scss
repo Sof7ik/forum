@@ -94,10 +94,10 @@ div.header-wrapper
     }
 }
 
-div.login
-{
-    margin-left: auto;
-}
+// div.login
+// {
+    // margin-left: auto;
+// }
 
 a.login-button
 {
@@ -190,7 +190,7 @@ div.dropdown
 
 nav.navbar
 {
-    @include flex(row wrap, flex-start, center);
+    @include flex(row wrap, space-between, center);
 
     border: 1px solid rgb(231, 231, 231);
     background-color: rgb(243, 243, 243);
@@ -223,6 +223,35 @@ nav.navbar
             &:last-child
             {
                 margin-right: unset;
+            }
+        }
+    }
+
+    form.searchForm
+    {
+        div
+        {
+            @include flex(row nowrap, flex-start, center);
+
+            input#searchQuery
+            {
+                width: 300px;
+                padding: 2px 0;
+                text-indent: 5px;
+            }
+
+            label.searchLabel
+            {
+                background-image: url('./../img/search.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center center;
+
+                display: block;
+                height: 30px;
+                width: 30px;
+
+                padding: 2px;
             }
         }
     }

@@ -77,6 +77,8 @@
 
     </main>
 
+    <?include dirname(__DIR__) . '/pages/footer.php'?>
+    
     <script src='/js/reg.js' defer></script>
 
 </body>

@@ -2,7 +2,7 @@
 
 main.add-theme
 {
-    padding: 50px 0 0 0;
+    padding: 50px 0;
 }
 
 form.add-theme-form
@@ -10,17 +10,30 @@ form.add-theme-form
     @include flex(column nowrap, flex-start, flex-start);
 }
 
-textarea#themeDesc
+textarea#themeDesc, textarea#themeText
 {
-    width: 500px;
     min-height: 80px;
 
     resize: vertical;
-    max-height: 300px;
 
-    text-indent: 15px;
+    padding: 10px 20px;
 
-    padding: 5px 0;
+    font-size: 18px;
+}
+
+textarea#themeDesc
+{
+    max-height: 180px;
+    width: 500px;
+}
+
+textarea#themeText
+{
+    min-height: 200px;
+    max-height: 1200px;
+    width: 80%;
+
+    text-indent: 10px;
 }
 
 div.buttons

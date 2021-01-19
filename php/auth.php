@@ -2,12 +2,9 @@
  
 require_once './connection.php';
 
-$email = $_POST['userEmail'];
-$password = $_POST['userPass'];
-
 $userInfo = [
-    'email' => $email, 
-    'password' => $password
+    'email' => $_POST['userEmail'], 
+    'password' => $_POST['userPass']
 ];
 
 $stmt = $pdo->prepare('SELECT * FROM '.dbname.'.`users` WHERE `email` = :email AND `password` = :password');
@@ -44,10 +41,5 @@ if(gettype($row) === 'boolean')
 
     header('Location: ./../index.php');
 }
-
-
-
-
-
 
 ?>

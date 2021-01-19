@@ -28,11 +28,8 @@ $selectMyThemes = $pdo->prepare(
 
 $selectMyThemes->execute(array('userId' => $userId));
 
-$counter = 1;
-$index = 1;
 while ($myTheme = $selectMyThemes->fetch()) {
     $date = new DateTime($myTheme['date']);
-    // $counter =  $counter === 1 ? 2 : 1;
     ?>
 
     <div class="theme">
@@ -41,8 +38,7 @@ while ($myTheme = $selectMyThemes->fetch()) {
         if ($myTheme['theme-preview'] !== '')
         {
             $imageIsNull = 0;
-        }
-        else 
+        } else 
         {
             $imageIsNull = 1;
         }
@@ -50,35 +46,18 @@ while ($myTheme = $selectMyThemes->fetch()) {
         if (file_exists(dirname(__DIR__).'/theme-thumbnail//'.$myTheme['theme-preview']))
         {
             $isFileExists = 1;
-        }
-        else
+        } else
         {
             $isFileExists = 0;
         }
 
         if(!$imageIsNull && $isFileExists)
         {
-            $url = '/theme-thumbnail//'.trim($myTheme['theme-preview']);
-        }
-        else 
+            $url = '/theme-thumbnail//'.$myTheme['theme-preview'];
+        } else 
         {
             $url = 'https://via.placeholder.com/300x200.png';
         }
-            
-            // $url =  ? 'https://via.placeholder.com/300x200.png' : '/theme-thumbnail//'.trim($myTheme['theme-preview']);
-
-        // if (file_exists('/theme-thumbnail//'.trim($myTheme['theme-preview'])))
-        // {
-        //     echo "Файл есть";
-        //     echo '/theme-thumbnail//'.trim($myTheme['theme-preview']);
-        // }
-        // else 
-        // {
-        //     echo "Файл нету";
-        //     echo '/theme-thumbnail//'.trim($myTheme['theme-preview']);
-        // }
-
-            // $url = file_exists('/theme-thumbnail//'.trim($myTheme['theme-preview'])) ? '/theme-thumbnail//'.trim($theme['theme-preview']) : 'https://via.placeholder.com/300x200.png' ;
         ?>
         <div class="theme-preview" style="background-image: url('<?=$url?>')"></div>
 
@@ -110,27 +89,12 @@ while ($myTheme = $selectMyThemes->fetch()) {
 
                 while ($comments = $countComments->fetch(PDO::FETCH_LAZY))
                 {
-                    if ($comments[0] % 2 == 0)
-                    {
-                        echo $comments[0].' ответа в теме';
-                    }
-
-                    elseif (($comments[0] % $comments[0] == 0) && ($comments[0] !== 0))
-                    {
-                        echo $comments[0].' ответ в теме';
-                    }
-
-                    else if ($comments[0] === 0)
-                    {
-                        echo $comments[0].' ответов в теме';
-                    }
-                    
+                    echo "Комментариев в теме: ".$comments[0];
                 }?>
             </span>
 
         </div>
     <?php
-    $index++;
 }
 ?>
 

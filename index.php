@@ -39,5 +39,7 @@
     
 </div>
 
+<?include './pages/footer.php'?>
+
 </body>
 </html>

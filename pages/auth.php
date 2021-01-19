@@ -64,5 +64,7 @@ if(!empty($_COOKIE['user']))
             <p class="not-registered">Ещё не зарегистрированы? <a href="/pages/registration.php">Зарегистрируйтесь!</a></p>
         </div>
     </main>
+
+    <?include dirname(__DIR__) . '/pages/footer.php'?>
 </body>
 </html>

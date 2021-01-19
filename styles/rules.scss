@@ -1,3 +1,10 @@
+@import './mixins.scss';
+
+main.rules
+{
+    @include flex(column nowrap, flex-start, flex-start);
+}
+
 h2.rules-title, p.rules-subtitle
 {
     text-align: center;

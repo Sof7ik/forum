@@ -23,6 +23,8 @@ div.input-wrapper
     @include flex(column nowrap, flex-start, flex-start);
     margin-bottom: 15px;
 
+    width: 100%;
+
     &:last-child
     {
         margin-bottom: unset;
@@ -32,6 +34,8 @@ div.input-wrapper
     {
         min-width: 500px;
         padding: 5px 0 5px 15px;
+
+        font-size: 18px;
     }
 }
 

@@ -1,5 +1,17 @@
+div.left
+{
+    p
+    {
+        font-size: 20px;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+    }
+}
+
 aside
 {
+    width: 100%;
+
     border: 1px solid rgb(231, 231, 231);
     background-color: rgb(243, 243, 243);
 
@@ -98,12 +110,18 @@ div.map
 
 @media all and (max-width: 1615px)
 {
+    div.left
+    {
+        width: 50%;
+    }
+
     aside
     {
         order: 1;
         
         margin-right: unset;
         margin-bottom: 50px;
+        max-width: unset;
     }
 
     div.map-aside

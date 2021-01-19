@@ -1,0 +1,160 @@
+@import './mixins.scss';
+
+footer
+{
+    background-color: #1B4CB7;
+
+    padding: 20px 0;
+    color: #fff;
+}
+
+div.footer-info-wrapper
+{
+    @include flex(row wrap, space-between, flex-start);
+}
+
+div.left-footer
+{
+    @include flex(column nowrap, flex-start, flex-start);
+
+    img
+    {
+        width: 200px;
+    }
+}
+
+div.center-footer
+{
+    @include flex(row wrap, space-between, flex-start);
+
+    ul.links
+    {
+
+        margin-right: 70px;
+
+        &:last-child
+        {
+            margin-right: unset;
+        }
+
+        li 
+        {
+            margin-bottom: 10px;
+
+            &:last-child
+            {
+                margin-bottom: unset;
+            }
+
+            a
+            {
+                position: relative;
+                padding-bottom: 2px;
+                transition: all .3s;
+
+                &::before
+                {
+                    content: '';
+                    height: 1px;
+                    width: 0;
+                    background-color: #fff;
+                    
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+
+                &:hover::before
+                {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+div.right-footer
+{
+    @include flex(column nowrap, flex-start, flex-end);
+
+    p.address
+    {
+        margin: 20px 0;
+
+        text-align: right;
+    }
+
+    div.tels
+    {
+        a
+        {
+            display: block;
+        }
+    }
+}
+
+div.copyright
+{
+    margin-top: 60px;
+
+    @include flex(row wrap, space-between, flex-end);
+
+    div.social
+    {
+        @include flex(row wrap, center, center);
+        a
+        {
+            display: block;
+
+            width: 30px;
+            height: 30px;
+
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+
+            margin-right: 30px;
+
+            &.ok
+            {
+                background-image: url('/img/ok.svg');
+            }
+
+            &.facebook
+            {
+                background-image: url('/img/facebook.svg');
+            }
+
+            &.twitter
+            {
+                background-image: url('/img/twitter.svg');
+            }
+
+            &.youtube
+            {
+                background-image: url('/img/youtube.svg');
+            }
+
+            &.instagramm
+            {
+                background-image: url('/img/inst.svg');
+            }
+
+            &.web
+            {
+                background-image: url('/img/site.svg');
+            } 
+
+            &.vk
+            {
+                background-image: url('/img/vk.svg');
+            } 
+
+            &:last-child
+            {
+                margin-right: unset;
+            }
+        }
+    }
+}

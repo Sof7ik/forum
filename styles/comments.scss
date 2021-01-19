@@ -8,6 +8,11 @@ a.back-button
     margin-bottom: 20px;
 }
 
+div.theme-info-wrapper
+{
+    width: 100%;
+}
+
 div.theme-title
 {
     background-color: rgb(78, 78, 78);
@@ -71,7 +76,7 @@ article
 
 div.images
 {
-    @include grid(1fr, repeat(3, 1fr), 20px);
+    @include grid(1fr, repeat(4, 1fr), 20px);
 
     margin-bottom: 50px;
 

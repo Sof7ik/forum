@@ -25,15 +25,26 @@
     <main class="add-theme">
 
         <div class="container">
+            <?php
+            $errors = unserialize($_COOKIE['errors']);
+            if (!empty($errors['addThemeErrors']))
+            {
+                foreach ($errors['addThemeErrors'] as $key => $error) {
+                    ?>
+                    <p class="error-message"><?=$error['message']?></p>
+                    <?php
+                }
+            }
+            ?>
             <form enctype="multipart/form-data" action="./../php/add_theme.php" method="post" class="add-theme-form">
                 <div class="input-wrapper">
-                    <label for="themeName">Название темы<span class="required"> *</span></label>
-                    <input type="text" name="themeName" id="themeName" required>
+                    <label for="themeName">Название темы (не более 100 символов)<span class="required"> *</span></label>
+                    <input type="text" name="themeName" id="themeName" required maxlength="100">
                 </div>
 
                 <div class="input-wrapper">
-                    <label for="themeDesc">Описание темы<span class="required"> *</span></label>
-                    <textarea name="themeDesc" id="themeDesc" required></textarea>
+                    <label for="themeDesc">Описание темы (не более 250 символов)<span class="required"> *</span></label>
+                    <textarea name="themeDesc" id="themeDesc" required maxlength="250"></textarea>
                 </div>
 
                 <div class="input-wrapper">
@@ -44,6 +55,11 @@
                 </div>
 
                 <div id="theme-preview"></div>
+
+                <div class="input-wrapper">
+                    <label for="themeText">Текст статьи<span class="required"> *</span></label>
+                    <textarea name="text" required id="themeText" maxlength="65500"></textarea>
+                </div>
 
                 <div class="input-wrapper">
                     <label for="">Изображения в статью</label>
@@ -67,5 +83,7 @@
         </div>
 
     </main>
+
+    <?include dirname(__DIR__) . '/pages/footer.php'?>
 </body>
 </html>
